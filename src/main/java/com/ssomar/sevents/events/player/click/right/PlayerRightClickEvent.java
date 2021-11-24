@@ -36,6 +36,20 @@ public class PlayerRightClickEvent extends PlayerEvent implements Cancellable {
         this.cancel = cancel;
     }
 
+    /**
+     * Gets a list of handlers handling this event.
+     *
+     * @return A list of handlers handling this event.
+     */
+    public static HandlerList getHandlerList(){
+        return handlers;
+    }
+
+    /**
+     * Gets a list of handlers handling this event.
+     *
+     * @return A list of handlers handling this event.
+     */
     @Override
     public final @NotNull HandlerList getHandlers() {
         return handlers;

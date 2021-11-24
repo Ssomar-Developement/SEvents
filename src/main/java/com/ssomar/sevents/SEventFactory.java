@@ -6,12 +6,10 @@ public class SEventFactory {
 
     public SEvent getSEvent(EventName eventName){
         switch (eventName){
-            case PLAYER_RIGHT_CLICK_EVENT -> {
+            case PLAYER_RIGHT_CLICK_EVENT:
                 return new SPlayerRightClickEvent();
-            }
-            default -> {
+            default:
                 return null;
-            }
         }
 
     }

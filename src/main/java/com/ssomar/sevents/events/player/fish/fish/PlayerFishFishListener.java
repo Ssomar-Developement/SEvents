@@ -13,13 +13,11 @@ public class PlayerFishFishListener implements Listener {
     @EventHandler
     public void onPlayerFishEvent(PlayerFishEvent e) {
 
-        if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)) {
-            if(e.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
-                PlayerFishFishEvent playerFishFishEvent = new PlayerFishFishEvent((Player) e.getPlayer(), e.getCaught());
-                Bukkit.getServer().getPluginManager().callEvent(playerFishFishEvent);
-                if (playerFishFishEvent.isCancelled()) {
-                    e.setCancelled(true);
-                }
+        if (e.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
+            PlayerFishFishEvent playerFishFishEvent = new PlayerFishFishEvent((Player) e.getPlayer(), e.getCaught());
+            Bukkit.getServer().getPluginManager().callEvent(playerFishFishEvent);
+            if (playerFishFishEvent.isCancelled()) {
+                e.setCancelled(true);
             }
         }
     }

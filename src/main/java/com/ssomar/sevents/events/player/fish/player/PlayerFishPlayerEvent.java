@@ -23,6 +23,10 @@ public class PlayerFishPlayerEvent extends PlayerEvent implements Cancellable {
         this.target = target;
     }
 
+    public Player getTarget() {
+        return target;
+    }
+
     @Override
     public boolean isCancelled() {
         return cancel;

@@ -23,26 +23,23 @@ public class DynamicRegistration {
 
     public void register(EventName eventName, JavaPlugin plugin) {
         if (!registered.containsKey(eventName)) {
-            Map<JavaPlugin, Listener> registration = new HashMap<>();
             SEventFactory factory = new SEventFactory();
             Listener listener = factory.getSEvent(eventName).getChildListener();
-            registered.put(eventName, new Registration(plugin, listener));
-            plugin.getServer().getPluginManager().registerEvents(listener, plugin);
+            Registration registration;
+            registered.put(eventName, (registration = new Registration(plugin, listener)));
+            registration.register();
         } else {
             Registration registration = registered.get(eventName);
-            if(!registration.contains(plugin))
-            registration.addPlugin(plugin);
+            if(!registration.contains(plugin)) registration.addPlugin(plugin);
         }
     }
 
     public void unregister(EventName eventName, JavaPlugin plugin) {
         if (registered.containsKey(eventName)) {
             Registration registration = registered.get(eventName);
-            if (registration.contains(plugin)) {
-                if (registration.size() == 1) {
-                    HandlerList.getRegisteredListeners(plugin).remove(registration.getListener());
-                }
-                if (registration.removePlugin(plugin)) {
+            if (registration.isHost(plugin)) {
+                if(!registration.transferHost()){
+                    registration.unregister();
                     registered.remove(eventName);
                 }
             }

@@ -1,5 +1,6 @@
 package com.ssomar.sevents.registration;
 
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,13 +10,42 @@ import java.util.List;
 
 public class Registration {
 
+    /* The plugin where the Listener is hosted */
+    private JavaPlugin host;
+
+    /* The other plugins that uses this listener */
     private List<JavaPlugin> plugins;
 
     private Listener listener;
 
     public Registration(JavaPlugin plugin, Listener listener){
-        this.plugins = new ArrayList<>(Arrays.asList(plugin));
+        this.host = plugin;
+        this.plugins = new ArrayList<>();
         this.listener = listener;
+    }
+
+    public boolean isHost(JavaPlugin plugin){
+        return this.host.equals(plugin);
+    }
+
+    // #TODO METTRE UN LISTENER QUI CHECK QUAND UN PLUGIN SE UNLOAD SI LE PLUGIN EST HOST, IL FAUT TRANSFER
+    public boolean transferHost(){
+        if(size() > 0){
+            unregister();
+            host = plugins.get(0);
+            register();
+            return true;
+        }
+        return false;
+
+    }
+
+    public void register(){
+        host.getServer().getPluginManager().registerEvents(listener, host);
+    }
+
+    public void unregister(){
+        HandlerList.getRegisteredListeners(host).remove(listener);
     }
 
     public Listener getListener() {

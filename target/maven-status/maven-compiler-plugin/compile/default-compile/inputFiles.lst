@@ -1,9 +1,13 @@
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\player\PlayerFishPlayerEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\fish\PlayerFishFishEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\registration\Registration.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\left\PlayerLeftClickListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\SEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\fish\PlayerFishFishListener.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\active\PlayerActiveFlyEvent.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\active\PlayerActiveFlyListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\right\PlayerRightClickEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onplayer\right\PlayerRightClickOnPlayerListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\receivehit\global\PlayerReceiveHitGlobalListener.java
@@ -23,6 +27,8 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\registration\DynamicRegistration.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\block\PlayerFishBlockEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\player\PlayerFishPlayerListener.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\equip\armor\ArmorType.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\active\SPlayerActiveFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\sneak\desactive\PlayerDesactiveSneakEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\beforedeath\PlayerBeforeDeathEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\right\SPlayerRightClickOnEntityEvent.java
@@ -38,6 +44,7 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\left\SPlayerLeftClickEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\right\SPlayerRightClickEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\jump\PlayerJumpEvent.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\equip\armor\SPlayerEquipArmorEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\beforedeath\PlayerBeforeDeathListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\SEventFactory.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\jump\SPlayerJumpEvent.java
@@ -51,8 +58,10 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\player\SPlayerFishPlayerEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\kill\entity\PlayerKillEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\sneak\desactive\SPlayerDesactiveSneakEvent.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\desactive\SPlayerDesactiveFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\left\SPlayerLeftClickOnEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\entity\PlayerFishEntityEvent.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\desactive\PlayerDesactiveFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\kill\entity\SPlayerKillEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\sprint\active\PlayerActiveSprintEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\left\PlayerLeftClickOnEntityListener.java
@@ -62,6 +71,7 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\block\SPlayerFishBlockEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\jump\PlayerJumpListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fertilizeblock\SPlayerFertilizeBlockEvent.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\desactive\PlayerDesactiveFlyListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\left\PlayerLeftClickOnEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\sneak\active\SPlayerActiveSneakEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fertilizeblock\PlayerFertilizeBlockListener.java

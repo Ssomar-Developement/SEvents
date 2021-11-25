@@ -45,7 +45,7 @@ public class Registration {
     }
 
     public void unregister(){
-        HandlerList.getRegisteredListeners(host).remove(listener);
+        HandlerList.unregisterAll(listener);
     }
 
     public Listener getListener() {

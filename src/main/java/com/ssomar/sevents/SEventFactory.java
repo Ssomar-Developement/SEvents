@@ -1,11 +1,13 @@
 package com.ssomar.sevents;
 
+import com.ssomar.sevents.events.player.beforedeath.SPlayerBeforeDeathEvent;
 import com.ssomar.sevents.events.player.click.left.SPlayerLeftClickEvent;
 import com.ssomar.sevents.events.player.click.onentity.left.SPlayerLeftClickOnEntityEvent;
 import com.ssomar.sevents.events.player.click.onentity.right.SPlayerRightClickOnEntityEvent;
 import com.ssomar.sevents.events.player.click.onplayer.left.SPlayerLeftClickOnPlayerEvent;
 import com.ssomar.sevents.events.player.click.onplayer.right.SPlayerRightClickOnPlayerEvent;
 import com.ssomar.sevents.events.player.click.right.SPlayerRightClickEvent;
+import com.ssomar.sevents.events.player.fertilizeblock.SPlayerFertilizeBlockEvent;
 import com.ssomar.sevents.events.player.fish.block.SPlayerFishBlockEvent;
 import com.ssomar.sevents.events.player.fish.entity.SPlayerFishEntityEvent;
 import com.ssomar.sevents.events.player.fish.fish.SPlayerFishFishEvent;
@@ -13,6 +15,9 @@ import com.ssomar.sevents.events.player.fish.player.SPlayerFishPlayerEvent;
 import com.ssomar.sevents.events.player.jump.SPlayerJumpEvent;
 import com.ssomar.sevents.events.player.kill.entity.SPlayerKillEntityEvent;
 import com.ssomar.sevents.events.player.kill.player.SPlayerKillPlayerEvent;
+import com.ssomar.sevents.events.player.receivehit.byentity.SPlayerReceiveHitByEntityEvent;
+import com.ssomar.sevents.events.player.receivehit.byplayer.SPlayerReceiveHitByPlayerEvent;
+import com.ssomar.sevents.events.player.receivehit.global.SPlayerReceiveHitGlobalEvent;
 import com.ssomar.sevents.events.player.sneak.active.SPlayerActiveSneakEvent;
 import com.ssomar.sevents.events.player.sneak.desactive.SPlayerDesactiveSneakEvent;
 import com.ssomar.sevents.events.player.sprint.active.SPlayerActiveSprintEvent;
@@ -62,6 +67,19 @@ public class SEventFactory {
                 return new SPlayerKillPlayerEvent();
             case PLAYER_KILL_ENTITY_EVENT:
                 return new SPlayerKillEntityEvent();
+
+            case PLAYER_RECEIVE_HIT_BY_PLAYER_EVENT:
+                return new SPlayerReceiveHitByPlayerEvent();
+            case PLAYER_RECEIVE_HIT_BY_ENTITY_EVENT:
+                return new SPlayerReceiveHitByEntityEvent();
+            case PLAYER_RECEIVE_HIT_GLOBAL_EVENT:
+                return new SPlayerReceiveHitGlobalEvent();
+
+            case PLAYER_BEFORE_DEATH_EVENT:
+                return new SPlayerBeforeDeathEvent();
+
+            case PLAYER_FERTILIZE_BLOCK_EVENT:
+                return new SPlayerFertilizeBlockEvent();
 
             default:
                 return null;

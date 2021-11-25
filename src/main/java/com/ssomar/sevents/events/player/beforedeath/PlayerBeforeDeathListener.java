@@ -14,10 +14,12 @@ public class PlayerBeforeDeathListener implements Listener {
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent e) {
 
-        if(!(e.getEntity() instanceof Player p)) return;
+        if(!(e.getEntity() instanceof Player)) return;
+
+        Player p = (Player)e.getEntity();
 
         if (p.getHealth() <= e.getDamage()) {
-            PlayerBeforeDeathEvent playerBeforeDeathEvent = new PlayerBeforeDeathEvent((Player) e.getEntity());
+            PlayerBeforeDeathEvent playerBeforeDeathEvent = new PlayerBeforeDeathEvent(p);
             Bukkit.getServer().getPluginManager().callEvent(playerBeforeDeathEvent);
             if (playerBeforeDeathEvent.isCancelled()) {
                 e.setCancelled(true);

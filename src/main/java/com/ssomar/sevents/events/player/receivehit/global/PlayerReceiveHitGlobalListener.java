@@ -14,7 +14,7 @@ public class PlayerReceiveHitGlobalListener implements Listener {
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent e) {
 
-        if(!(e.getEntity() instanceof Player p)) return;
+        if(!(e.getEntity() instanceof Player)) return;
 
         PlayerReceiveHitGlobalEvent playerReceiveHitGlobalEvent = new PlayerReceiveHitGlobalEvent((Player) e.getEntity());
         Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitGlobalEvent);

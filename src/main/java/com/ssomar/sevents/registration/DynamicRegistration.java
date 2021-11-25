@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class DynamicRegistration {
 
-    public static DynamicRegistration instance;
+    private static DynamicRegistration instance;
 
-    public Map<EventName, Registration> registered;
+    private Map<EventName, Registration> registered;
 
     public DynamicRegistration() {
         registered = new HashMap<>();
@@ -29,7 +29,9 @@ public class DynamicRegistration {
             registered.put(eventName, new Registration(plugin, listener));
             plugin.getServer().getPluginManager().registerEvents(listener, plugin);
         } else {
-            registered.get(eventName).addPlugin(plugin);
+            Registration registration = registered.get(eventName);
+            if(!registration.contains(plugin))
+            registration.addPlugin(plugin);
         }
     }
 

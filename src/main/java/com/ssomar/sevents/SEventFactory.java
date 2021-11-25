@@ -7,11 +7,14 @@ import com.ssomar.sevents.events.player.click.onentity.right.SPlayerRightClickOn
 import com.ssomar.sevents.events.player.click.onplayer.left.SPlayerLeftClickOnPlayerEvent;
 import com.ssomar.sevents.events.player.click.onplayer.right.SPlayerRightClickOnPlayerEvent;
 import com.ssomar.sevents.events.player.click.right.SPlayerRightClickEvent;
+import com.ssomar.sevents.events.player.equip.armor.SPlayerEquipArmorEvent;
 import com.ssomar.sevents.events.player.fertilizeblock.SPlayerFertilizeBlockEvent;
 import com.ssomar.sevents.events.player.fish.block.SPlayerFishBlockEvent;
 import com.ssomar.sevents.events.player.fish.entity.SPlayerFishEntityEvent;
 import com.ssomar.sevents.events.player.fish.fish.SPlayerFishFishEvent;
 import com.ssomar.sevents.events.player.fish.player.SPlayerFishPlayerEvent;
+import com.ssomar.sevents.events.player.fly.active.SPlayerActiveFlyEvent;
+import com.ssomar.sevents.events.player.fly.desactive.SPlayerDesactiveFlyEvent;
 import com.ssomar.sevents.events.player.jump.SPlayerJumpEvent;
 import com.ssomar.sevents.events.player.kill.entity.SPlayerKillEntityEvent;
 import com.ssomar.sevents.events.player.kill.player.SPlayerKillPlayerEvent;
@@ -60,6 +63,11 @@ public class SEventFactory {
             case PLAYER_DESACTIVE_SPRINT_EVENT:
                 return new SPlayerDesactiveSprintEvent();
 
+            case PLAYER_ACTIVE_FLY_EVENT:
+                return new SPlayerActiveFlyEvent();
+            case PLAYER_DESACTIVE_FLY_EVENT:
+                return new SPlayerDesactiveFlyEvent();
+
             case PLAYER_JUMP_EVENT:
                 return new SPlayerJumpEvent();
 
@@ -80,6 +88,9 @@ public class SEventFactory {
 
             case PLAYER_FERTILIZE_BLOCK_EVENT:
                 return new SPlayerFertilizeBlockEvent();
+
+            case PLAYER_EQUIP_ARMOR_EVENT:
+                return new SPlayerEquipArmorEvent();
 
             default:
                 return null;

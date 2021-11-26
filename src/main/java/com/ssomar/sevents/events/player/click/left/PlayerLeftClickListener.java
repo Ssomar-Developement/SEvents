@@ -27,7 +27,7 @@ public class PlayerLeftClickListener implements Listener {
         cancelInteraction = new ArrayList<>();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void playerInteractEvent(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();

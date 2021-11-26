@@ -8,7 +8,6 @@ import com.ssomar.sevents.events.player.click.onplayer.left.SPlayerLeftClickOnPl
 import com.ssomar.sevents.events.player.click.onplayer.right.SPlayerRightClickOnPlayerEvent;
 import com.ssomar.sevents.events.player.click.right.SPlayerRightClickEvent;
 import com.ssomar.sevents.events.player.equip.armor.SPlayerEquipArmorEvent;
-import com.ssomar.sevents.events.player.fertilizeblock.SPlayerFertilizeBlockEvent;
 import com.ssomar.sevents.events.player.fish.block.SPlayerFishBlockEvent;
 import com.ssomar.sevents.events.player.fish.entity.SPlayerFishEntityEvent;
 import com.ssomar.sevents.events.player.fish.fish.SPlayerFishFishEvent;
@@ -85,9 +84,6 @@ public class SEventFactory {
 
             case PLAYER_BEFORE_DEATH_EVENT:
                 return new SPlayerBeforeDeathEvent();
-
-            case PLAYER_FERTILIZE_BLOCK_EVENT:
-                return new SPlayerFertilizeBlockEvent();
 
             case PLAYER_EQUIP_ARMOR_EVENT:
                 return new SPlayerEquipArmorEvent();

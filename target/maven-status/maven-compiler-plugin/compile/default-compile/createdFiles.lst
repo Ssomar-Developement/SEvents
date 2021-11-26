@@ -20,9 +20,7 @@ com\ssomar\sevents\events\player\click\onplayer\left\PlayerLeftClickOnPlayerEven
 com\ssomar\sevents\events\player\click\onplayer\right\PlayerRightClickOnPlayerEvent.class
 com\ssomar\sevents\events\player\kill\player\SPlayerKillPlayerEvent.class
 com\ssomar\sevents\events\player\fish\entity\PlayerFishEntityEvent.class
-com\ssomar\sevents\events\player\fertilizeblock\SPlayerFertilizeBlockEvent.class
 com\ssomar\sevents\SEvent.class
-com\ssomar\sevents\events\player\fertilizeblock\PlayerFertilizeBlockListener.class
 com\ssomar\sevents\events\player\sneak\active\PlayerActiveSneakListener.class
 com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityListener.class
 com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityEvent.class
@@ -36,7 +34,6 @@ com\ssomar\sevents\events\player\fly\desactive\SPlayerDesactiveFlyEvent.class
 com\ssomar\sevents\events\player\kill\entity\SPlayerKillEntityEvent.class
 com\ssomar\sevents\events\player\receivehit\byplayer\PlayerReceiveHitByPlayerListener.class
 com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorEvent.class
-com\ssomar\sevents\events\player\fertilizeblock\PlayerFertilizeBlockEvent.class
 com\ssomar\sevents\events\player\fly\desactive\PlayerDesactiveFlyListener.class
 com\ssomar\sevents\events\player\receivehit\byplayer\SPlayerReceiveHitByPlayerEvent.class
 com\ssomar\sevents\events\player\click\right\PlayerRightClickListener.class

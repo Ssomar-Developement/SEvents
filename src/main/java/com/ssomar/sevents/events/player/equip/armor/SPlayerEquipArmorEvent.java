@@ -2,7 +2,6 @@ package com.ssomar.sevents.events.player.equip.armor;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;
-import com.ssomar.sevents.events.player.fertilizeblock.PlayerFertilizeBlockListener;
 import org.bukkit.event.Listener;
 
 public class SPlayerEquipArmorEvent extends SEvent {
@@ -13,6 +12,6 @@ public class SPlayerEquipArmorEvent extends SEvent {
 
     @Override
     public Listener getChildListener() {
-        return new PlayerFertilizeBlockListener();
+        return new PlayerEquipArmorListener();
     }
 }

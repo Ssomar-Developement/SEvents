@@ -18,12 +18,12 @@ import java.util.List;
 
 public class PlayerRightClickListener implements Listener {
 
-    private final List<Material> invoke1LeftClick;
     private final List<Material> invoke2LeftClick;
+    private final List<Material> invoke3LeftClick;
 
     public PlayerRightClickListener(){
-        invoke1LeftClick = new ArrayList<>();
         invoke2LeftClick = new ArrayList<>();
+        invoke3LeftClick = new ArrayList<>();
 
         invoke2LeftClick.add(Material.SPLASH_POTION);
         if(Version._1_12.is()) invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
@@ -32,7 +32,7 @@ public class PlayerRightClickListener implements Listener {
         invoke2LeftClick.add(Material.SNOWBALL);
         invoke2LeftClick.add(Material.ENDER_PEARL);
 
-        invoke2LeftClick.add(Material.ENDER_EYE);
+        invoke3LeftClick.add(Material.ENDER_EYE);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -59,13 +59,13 @@ public class PlayerRightClickListener implements Listener {
 
         // condition to cancel the left click when player right click in the air
         if(action.equals(Action.RIGHT_CLICK_AIR)) {
-            if(invoke1LeftClick.contains(e.getItem().getType())){
+            if(invoke2LeftClick.contains(e.getItem().getType())){
 
-                TooManyInteractionManager.getInstance().put(p.getUniqueId(), 1);
+                TooManyInteractionManager.getInstance().put(p.getUniqueId(), 2);
                 System.out.println("TOO MANY INTERACT ADD 1");
             }
-            else if(invoke2LeftClick.contains(e.getItem().getType())){
-                TooManyInteractionManager.getInstance().put(p.getUniqueId(), 2);
+            else if(invoke3LeftClick.contains(e.getItem().getType())){
+                TooManyInteractionManager.getInstance().put(p.getUniqueId(), 3);
             }
         }
 

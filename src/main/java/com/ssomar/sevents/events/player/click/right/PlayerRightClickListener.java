@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.click.right;
 
+import com.ssomar.sevents.events.player.click.TooManyInteractionManager;
 import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -17,18 +18,21 @@ import java.util.List;
 
 public class PlayerRightClickListener implements Listener {
 
-    private final List<Material> throwable;
+    private final List<Material> invoke1LeftClick;
+    private final List<Material> invoke2LeftClick;
 
     public PlayerRightClickListener(){
-        throwable = new ArrayList<>();
+        invoke1LeftClick = new ArrayList<>();
+        invoke2LeftClick = new ArrayList<>();
 
-        throwable.add(Material.SPLASH_POTION);
-        if(Version._1_12.is()) throwable.add(Material.valueOf("EXP_BOTTLE"));
-        else throwable.add(Material.EXPERIENCE_BOTTLE);
+        invoke1LeftClick.add(Material.SPLASH_POTION);
+        if(Version._1_12.is()) invoke1LeftClick.add(Material.valueOf("EXP_BOTTLE"));
+        else invoke1LeftClick.add(Material.EXPERIENCE_BOTTLE);
 
-        throwable.add(Material.SNOWBALL);
-        throwable.add(Material.ENDER_PEARL);
-        throwable.add(Material.ENDER_EYE);
+        invoke1LeftClick.add(Material.SNOWBALL);
+        invoke1LeftClick.add(Material.ENDER_PEARL);
+
+        invoke2LeftClick.add(Material.ENDER_EYE);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -54,8 +58,13 @@ public class PlayerRightClickListener implements Listener {
         }
 
         // condition to cancel the left click when player right click in the air
-        if(action.equals(Action.RIGHT_CLICK_AIR) && throwable.contains(e.getItem().getType())) {
-
+        if(action.equals(Action.RIGHT_CLICK_AIR)) {
+            if(invoke1LeftClick.contains(e.getItem().getType())){
+                TooManyInteractionManager.getInstance().put(p.getUniqueId(), 1);
+            }
+            else if(invoke1LeftClick.contains(e.getItem().getType())){
+                TooManyInteractionManager.getInstance().put(p.getUniqueId(), 2);
+            }
         }
 
     }

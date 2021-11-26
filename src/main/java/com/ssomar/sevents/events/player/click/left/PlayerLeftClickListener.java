@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.click.left;
 
+import com.ssomar.sevents.events.player.click.TooManyInteractionManager;
 import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -31,6 +32,15 @@ public class PlayerLeftClickListener implements Listener {
     public void playerInteractEvent(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
+
+        if(TooManyInteractionManager.getInstance().containsKey(pUUID)){
+            int amount = TooManyInteractionManager.getInstance().get(pUUID);
+            if(amount > 0) {
+                TooManyInteractionManager.getInstance().put(pUUID, amount - 1);
+                return;
+            }
+        }
+
         // Cancel if its necessary
         System.out.println("LEFT CLICK INFO: "+e.getAction()+" :: "+e.getHand()+" :: "+e.getMaterial()+" :: "+e.useItemInHand());
         System.out.println("PREDETECT CANCEL INTERACT");

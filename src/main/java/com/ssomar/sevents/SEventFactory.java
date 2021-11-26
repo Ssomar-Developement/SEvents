@@ -24,6 +24,9 @@ import com.ssomar.sevents.events.player.sneak.active.SPlayerActiveSneakEvent;
 import com.ssomar.sevents.events.player.sneak.desactive.SPlayerDesactiveSneakEvent;
 import com.ssomar.sevents.events.player.sprint.active.SPlayerActiveSprintEvent;
 import com.ssomar.sevents.events.player.sprint.desactive.SPlayerDesactiveSprintEvent;
+import com.ssomar.sevents.events.projectile.hitblock.SProjectileHitBlockEvent;
+import com.ssomar.sevents.events.projectile.hitenttity.SProjectileHitEntityEvent;
+import com.ssomar.sevents.events.projectile.hitplayer.SProjectileHitPlayerEvent;
 
 public class SEventFactory {
 
@@ -87,6 +90,13 @@ public class SEventFactory {
 
             case PLAYER_EQUIP_ARMOR_EVENT:
                 return new SPlayerEquipArmorEvent();
+
+            case PROJECTILE_HIT_BLOCK:
+                return new SProjectileHitBlockEvent();
+            case PROJECTILE_HIT_ENTITY:
+                return new SProjectileHitEntityEvent();
+            case PROJECTILE_HIT_PLAYER:
+                return new SProjectileHitPlayerEvent();
 
             default:
                 return null;

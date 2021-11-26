@@ -27,7 +27,10 @@ public enum EventName {
     PLAYER_ACTIVE_SNEAK_EVENT("PlayerActiveSneakEvent"),
     PLAYER_DESACTIVE_SNEAK_EVENT("PlayerDesactiveSneakEvent"),
     PLAYER_ACTIVE_SPRINT_EVENT("PlayerActiveSprintEvent"),
-    PLAYER_DESACTIVE_SPRINT_EVENT("PlayerDesactiveSprintEvent");
+    PLAYER_DESACTIVE_SPRINT_EVENT("PlayerDesactiveSprintEvent"),
+    PROJECTILE_HIT_BLOCK("ProjectileHitBlockEvent"),
+    PROJECTILE_HIT_ENTITY("ProjectileHitEntityEvent"),
+    PROJECTILE_HIT_PLAYER("ProjectileHitPlayerEvent");
 
     public String name;
 

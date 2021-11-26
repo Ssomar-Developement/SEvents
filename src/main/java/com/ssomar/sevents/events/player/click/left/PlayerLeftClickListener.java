@@ -27,11 +27,12 @@ public class PlayerLeftClickListener implements Listener {
         cancelInteraction = new ArrayList<>();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void playerInteractEvent(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
         // Cancel if its necessary
+        System.out.println("LEFT CLICK INFO: "+e.getAction()+" :: "+e.getHand()+" :: "+e.getMaterial()+" :: "+e.useItemInHand());
         System.out.println("PREDETECT CANCEL INTERACT");
         if (cancelInteraction.contains(pUUID)) {
             System.out.println("DETECT CANCEL INTERACT");

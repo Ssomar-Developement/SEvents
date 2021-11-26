@@ -55,7 +55,7 @@ public class PlayerRightClickListener implements Listener {
 
         // condition to cancel the left click when player right click in the air
         if(action.equals(Action.RIGHT_CLICK_AIR) && throwable.contains(e.getItem().getType())) {
-            e.setCancelled(true);
+
         }
 
     }

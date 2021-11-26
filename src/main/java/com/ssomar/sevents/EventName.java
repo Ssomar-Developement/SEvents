@@ -16,7 +16,6 @@ public enum EventName {
     PLAYER_RECEIVE_HIT_GLOBAL_EVENT("PlayerReceiveHitGlobalEvent"),
     PLAYER_KILL_ENTITY_EVENT("PlayerKillEntityEvent"),
     PLAYER_KILL_PLAYER_EVENT("PlayerKillPlayerEvent"),
-    PLAYER_FERTILIZE_BLOCK_EVENT("PlayerFertilizeBlockEvent"),
     PLAYER_FISH_BLOCK_EVENT("PlayerFishBlockEvent"),
     PLAYER_FISH_FISH_EVENT("PlayerFishFishEvent"),
     PLAYER_FISH_ENTITY_EVENT("PlayerFishEntityEvent"),

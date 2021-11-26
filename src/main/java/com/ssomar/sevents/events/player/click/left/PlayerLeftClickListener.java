@@ -58,7 +58,7 @@ public class PlayerLeftClickListener implements Listener {
         Player p = e.getPlayer();
 
         /* Not in this version */
-        if (!(Version._1_12.is() || Version._1_13.is() || Version._1_14.is())) {
+        /*if (!(Version._1_12.is() || Version._1_13.is() || Version._1_14.is())) {
 
             Block b = p.getTargetBlock(null, 5);
 
@@ -76,30 +76,30 @@ public class PlayerLeftClickListener implements Listener {
 
                     if (yaw > 225 && yaw < 315) {
                         if ((267 <= yaw && yaw <= 273) && (-3 <= pitch && pitch <= 3)) {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> PAS ICI");
+
                         } else {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
+
                             cancel = true;
                         }
                     } else if (yaw > 315 || yaw < 45) {
                         if ((357 >= yaw || yaw <= 3) && (-3 <= pitch && pitch <= 3)) {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> PAS ICI");
+
                         } else {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
+
                             cancel = true;
                         }
                     } else if (yaw > 45 && yaw < 135) {
                         if ((89 <= yaw && yaw <= 93) && (-3 <= pitch && pitch <= 3)) {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> PAS ICI");
+
                         } else {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
+
                             cancel = true;
                         }
                     } else if (yaw > 135 && yaw < 225) {
                         if ((177 <= yaw && yaw <= 183) && (-3 <= pitch && pitch <= 3)) {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> PAS ICI");
+
                         } else {
-                            // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
+
                             cancel = true;
                         }
                     }
@@ -110,7 +110,8 @@ public class PlayerLeftClickListener implements Listener {
                 // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
                 cancel = true;
             }
-        }
+        }*/
+        if(Version._1_18.is()) cancel = true;
 
         if (cancel) {
             cancelInteraction.add(p.getUniqueId());

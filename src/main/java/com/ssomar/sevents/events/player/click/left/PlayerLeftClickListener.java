@@ -32,7 +32,9 @@ public class PlayerLeftClickListener implements Listener {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
         // Cancel if its necessary
+        System.out.println("PREDETECT CANCEL INTERACT");
         if (cancelInteraction.contains(pUUID)) {
+            System.out.println("DETECT CANCEL INTERACT");
             cancelInteraction.removeAll(Collections.singleton(pUUID));
             e.setCancelled(true);
             return;
@@ -111,9 +113,13 @@ public class PlayerLeftClickListener implements Listener {
                 cancel = true;
             }
         }*/
-        if(Version._1_18.is()) cancel = true;
+        if(Version._1_18.is()){
+            System.out.println("IS 1 18");
+            cancel = true;
+        }
 
         if (cancel) {
+            System.out.println("ADD CANCEL INTERACT");
             cancelInteraction.add(p.getUniqueId());
         }
     }

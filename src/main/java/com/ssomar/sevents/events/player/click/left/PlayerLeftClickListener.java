@@ -15,6 +15,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +30,13 @@ public class PlayerLeftClickListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void playerInteractEvent(PlayerInteractEvent e) {
         Player p = e.getPlayer();
+        UUID pUUID = p.getUniqueId();
+        // Cancel if its necessary
+        if (cancelInteraction.contains(pUUID)) {
+            cancelInteraction.removeAll(Collections.singleton(pUUID));
+            e.setCancelled(true);
+            return;
+        }
 
         Action action = e.getAction();
         if (action.equals(Action.PHYSICAL)) return;

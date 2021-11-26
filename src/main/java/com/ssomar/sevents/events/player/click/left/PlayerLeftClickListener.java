@@ -33,10 +33,14 @@ public class PlayerLeftClickListener implements Listener {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
 
+        System.out.println("TOO MANY INTERACT CHECK");
         if(TooManyInteractionManager.getInstance().containsKey(pUUID)){
+
             int amount = TooManyInteractionManager.getInstance().get(pUUID);
+            System.out.println("TOO MANY INTERACT Contains: "+amount);
             if(amount > 0) {
                 TooManyInteractionManager.getInstance().put(pUUID, amount - 1);
+                System.out.println("TOO MANY interact cancel");
                 return;
             }
         }

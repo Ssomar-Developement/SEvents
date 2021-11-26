@@ -72,6 +72,7 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\kill\entity\SPlayerKillEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\sprint\active\PlayerActiveSprintEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\left\PlayerLeftClickOnEntityListener.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\TooManyInteractionManager.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\entity\SPlayerFishEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\sprint\desactive\PlayerDesactiveSprintEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\right\PlayerRightClickOnEntityEvent.java

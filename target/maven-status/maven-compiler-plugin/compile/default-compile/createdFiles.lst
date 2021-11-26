@@ -23,6 +23,7 @@ com\ssomar\sevents\events\player\click\onplayer\right\PlayerRightClickOnPlayerEv
 com\ssomar\sevents\events\player\kill\player\SPlayerKillPlayerEvent.class
 com\ssomar\sevents\events\player\fish\entity\PlayerFishEntityEvent.class
 com\ssomar\sevents\SEvent.class
+com\ssomar\sevents\events\player\click\TooManyInteractionManager.class
 com\ssomar\sevents\events\player\sneak\active\PlayerActiveSneakListener.class
 com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityListener.class
 com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityEvent.class

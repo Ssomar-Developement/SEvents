@@ -60,9 +60,11 @@ public class PlayerRightClickListener implements Listener {
         // condition to cancel the left click when player right click in the air
         if(action.equals(Action.RIGHT_CLICK_AIR)) {
             if(invoke1LeftClick.contains(e.getItem().getType())){
+
                 TooManyInteractionManager.getInstance().put(p.getUniqueId(), 1);
+                System.out.println("TOO MANY INTERACT ADD 1");
             }
-            else if(invoke1LeftClick.contains(e.getItem().getType())){
+            else if(invoke2LeftClick.contains(e.getItem().getType())){
                 TooManyInteractionManager.getInstance().put(p.getUniqueId(), 2);
             }
         }

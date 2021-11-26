@@ -1,4 +1,4 @@
-package com.ssomar.sevents.events.projectile.hitenttity;
+package com.ssomar.sevents.events.projectile.hitentity;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;

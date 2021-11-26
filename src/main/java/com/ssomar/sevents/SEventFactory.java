@@ -25,7 +25,7 @@ import com.ssomar.sevents.events.player.sneak.desactive.SPlayerDesactiveSneakEve
 import com.ssomar.sevents.events.player.sprint.active.SPlayerActiveSprintEvent;
 import com.ssomar.sevents.events.player.sprint.desactive.SPlayerDesactiveSprintEvent;
 import com.ssomar.sevents.events.projectile.hitblock.SProjectileHitBlockEvent;
-import com.ssomar.sevents.events.projectile.hitenttity.SProjectileHitEntityEvent;
+import com.ssomar.sevents.events.projectile.hitentity.SProjectileHitEntityEvent;
 import com.ssomar.sevents.events.projectile.hitplayer.SProjectileHitPlayerEvent;
 
 public class SEventFactory {

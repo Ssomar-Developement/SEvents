@@ -1,4 +1,4 @@
-package com.ssomar.sevents.events.projectile.hitenttity;
+package com.ssomar.sevents.events.projectile.hitentity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;

@@ -28,28 +28,30 @@ public class PlayerLeftClickListener implements Listener {
         cancelInteraction = new ArrayList<>();
     }
 
+    //#TODO WHEN LEFT CLICK TO BREAK A BLOCK AND WHEN THERE IS AIR BEHIND THE BLOCK THE LEFT CLICK IS ACTIVATED TWO TIMES
     @EventHandler(priority = EventPriority.HIGHEST)
     public void playerInteractEvent(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
 
-        System.out.println("TOO MANY INTERACT CHECK");
+        //System.out.println("TOO MANY INTERACT CHECK");
         if(TooManyInteractionManager.getInstance().containsKey(pUUID)){
 
             int amount = TooManyInteractionManager.getInstance().get(pUUID);
-            System.out.println("TOO MANY INTERACT Contains: "+amount);
+            //System.out.println("TOO MANY INTERACT Contains: "+amount);
             if(amount > 0) {
-                TooManyInteractionManager.getInstance().put(pUUID, amount - 1);
-                System.out.println("TOO MANY interact cancel");
+                if(amount == 1) TooManyInteractionManager.getInstance().remove(pUUID);
+                else TooManyInteractionManager.getInstance().put(pUUID, amount - 1);
+                //System.out.println("TOO MANY interact cancel");
                 return;
             }
         }
 
         // Cancel if its necessary
-        System.out.println("LEFT CLICK INFO: "+e.getAction()+" :: "+e.getHand()+" :: "+e.getMaterial()+" :: "+e.useItemInHand());
-        System.out.println("PREDETECT CANCEL INTERACT");
+        //System.out.println("LEFT CLICK INFO: "+e.getAction()+" :: "+e.getHand()+" :: "+e.getMaterial()+" :: "+e.useItemInHand());
+        //System.out.println("PREDETECT CANCEL INTERACT");
         if (cancelInteraction.contains(pUUID)) {
-            System.out.println("DETECT CANCEL INTERACT");
+            //System.out.println("DETECT CANCEL INTERACT");
             cancelInteraction.removeAll(Collections.singleton(pUUID));
             e.setCancelled(true);
             return;
@@ -129,12 +131,12 @@ public class PlayerLeftClickListener implements Listener {
             }
         }*/
         if(Version._1_18.is()){
-            System.out.println("IS 1 18");
+            //System.out.println("IS 1 18");
             cancel = true;
         }
 
         if (cancel) {
-            System.out.println("ADD CANCEL INTERACT");
+            //System.out.println("ADD CANCEL INTERACT");
             cancelInteraction.add(p.getUniqueId());
         }
     }

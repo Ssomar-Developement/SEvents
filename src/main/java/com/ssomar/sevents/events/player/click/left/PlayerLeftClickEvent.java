@@ -1,6 +1,7 @@
 package com.ssomar.sevents.events.player.click.left;
 
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
@@ -13,21 +14,29 @@ public class PlayerLeftClickEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
     private final Block block;
+    private final BlockFace blockFace;
 
     /**
      * @param player The player who put on / removed the armor.
      * @param block The block clicked, can be null
      */
-    public PlayerLeftClickEvent(final Player player, final @Nullable  Block block){
+    public PlayerLeftClickEvent(final Player player, final @Nullable  Block block, @NotNull BlockFace blockFace){
         super(player);
         this.block = block;
+        this.blockFace = blockFace;
     }
 
+    @Nullable
     public Block getBlock() {
         return block;
     }
 
     public boolean hasBlock() {return block != null;}
+
+    @NotNull
+    public BlockFace getBlockFace() {
+        return blockFace;
+    }
 
     @Override
     public boolean isCancelled() {

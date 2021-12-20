@@ -17,6 +17,7 @@ import com.ssomar.sevents.events.player.fly.desactive.SPlayerDesactiveFlyEvent;
 import com.ssomar.sevents.events.player.jump.SPlayerJumpEvent;
 import com.ssomar.sevents.events.player.kill.entity.SPlayerKillEntityEvent;
 import com.ssomar.sevents.events.player.kill.player.SPlayerKillPlayerEvent;
+import com.ssomar.sevents.events.player.press.SPlayerPressPlateEvent;
 import com.ssomar.sevents.events.player.receivehit.byentity.SPlayerReceiveHitByEntityEvent;
 import com.ssomar.sevents.events.player.receivehit.byplayer.SPlayerReceiveHitByPlayerEvent;
 import com.ssomar.sevents.events.player.receivehit.global.SPlayerReceiveHitGlobalEvent;
@@ -90,6 +91,9 @@ public class SEventFactory {
 
             case PLAYER_EQUIP_ARMOR_EVENT:
                 return new SPlayerEquipArmorEvent();
+
+            case PLAYER_PRESS_PLATE_EVENT:
+                return new SPlayerPressPlateEvent();
 
             case PROJECTILE_HIT_BLOCK:
                 return new SProjectileHitBlockEvent();

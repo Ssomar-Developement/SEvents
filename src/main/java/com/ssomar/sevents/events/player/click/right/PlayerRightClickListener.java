@@ -29,13 +29,14 @@ public class PlayerRightClickListener implements Listener {
         if(Version._1_12.is()){
             invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
             invoke2LeftClick.add(Material.valueOf("SNOW_BALL"));
+            invoke2LeftClick.add(Material.valueOf("EYE_OF_ENDER"));
         }
         else{
             invoke2LeftClick.add(Material.EXPERIENCE_BOTTLE);
             invoke2LeftClick.add(Material.SNOWBALL);
+            invoke3LeftClick.add(Material.ENDER_EYE);
         }
         invoke2LeftClick.add(Material.ENDER_PEARL);
-        invoke3LeftClick.add(Material.ENDER_EYE);
 
     }
 

@@ -11,6 +11,7 @@ import com.ssomar.sevents.events.player.equip.armor.SPlayerEquipArmorEvent;
 import com.ssomar.sevents.events.player.fish.block.SPlayerFishBlockEvent;
 import com.ssomar.sevents.events.player.fish.entity.SPlayerFishEntityEvent;
 import com.ssomar.sevents.events.player.fish.fish.SPlayerFishFishEvent;
+import com.ssomar.sevents.events.player.fish.nothing.SPlayerFishNothingEvent;
 import com.ssomar.sevents.events.player.fish.player.SPlayerFishPlayerEvent;
 import com.ssomar.sevents.events.player.fly.active.SPlayerActiveFlyEvent;
 import com.ssomar.sevents.events.player.fly.desactive.SPlayerDesactiveFlyEvent;
@@ -55,6 +56,8 @@ public class SEventFactory {
                 return new SPlayerFishEntityEvent();
             case PLAYER_FISH_BLOCK_EVENT:
                 return new SPlayerFishBlockEvent();
+            case PLAYER_FISH_NOTHING_EVENT:
+                return new SPlayerFishNothingEvent();
 
             case PLAYER_ACTIVE_SNEAK_EVENT:
                 return new SPlayerActiveSneakEvent();

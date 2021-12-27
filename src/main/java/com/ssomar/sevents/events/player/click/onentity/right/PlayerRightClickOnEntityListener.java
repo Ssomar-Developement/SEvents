@@ -2,6 +2,7 @@ package com.ssomar.sevents.events.player.click.onentity.right;
 
 import com.ssomar.sevents.events.player.click.TooManyInteractionManager;
 import com.ssomar.sevents.events.player.click.onentity.left.PlayerLeftClickOnEntityEvent;
+import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -32,7 +33,7 @@ public class PlayerRightClickOnEntityListener implements Listener {
                 e.setCancelled(true);
             }
             /* Gold on Piglin generates a LEFT_CLICK event */
-            if(e.getRightClicked().getType().equals(EntityType.PIGLIN)){
+            if(!Version._1_12.is() && !Version._1_13.is() && !Version._1_14.is() && !Version._1_15.is() && e.getRightClicked().getType().equals(EntityType.PIGLIN)){
                 Player p = e.getPlayer();
                 PlayerInventory pInv = p.getInventory();
                 ItemStack item;

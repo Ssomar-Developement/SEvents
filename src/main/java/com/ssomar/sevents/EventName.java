@@ -19,6 +19,7 @@ public enum EventName {
     PLAYER_FISH_BLOCK_EVENT("PlayerFishBlockEvent"),
     PLAYER_FISH_FISH_EVENT("PlayerFishFishEvent"),
     PLAYER_FISH_ENTITY_EVENT("PlayerFishEntityEvent"),
+    PLAYER_FISH_NOTHING_EVENT("PlayerFishNothingEvent"),
     PLAYER_FISH_PLAYER_EVENT("PlayerFishPlayerEvent"),
     PLAYER_JUMP_EVENT("PlayerJumpEvent"),
     PLAYER_EQUIP_ARMOR_EVENT("PlayerEquipArmorEvent"),
@@ -28,6 +29,7 @@ public enum EventName {
     PLAYER_DESACTIVE_SNEAK_EVENT("PlayerDesactiveSneakEvent"),
     PLAYER_ACTIVE_SPRINT_EVENT("PlayerActiveSprintEvent"),
     PLAYER_DESACTIVE_SPRINT_EVENT("PlayerDesactiveSprintEvent"),
+    PLAYER_PRESS_PLATE_EVENT("PlayerPressPlateEvent"),
     PROJECTILE_HIT_BLOCK("ProjectileHitBlockEvent"),
     PROJECTILE_HIT_ENTITY("ProjectileHitEntityEvent"),
     PROJECTILE_HIT_PLAYER("ProjectileHitPlayerEvent");

@@ -26,13 +26,18 @@ public class PlayerRightClickListener implements Listener {
         invoke3LeftClick = new ArrayList<>();
 
         invoke2LeftClick.add(Material.SPLASH_POTION);
-        if(Version._1_12.is()) invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
-        else invoke2LeftClick.add(Material.EXPERIENCE_BOTTLE);
-
-        invoke2LeftClick.add(Material.SNOWBALL);
+        if(Version._1_12.is()){
+            invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
+            invoke2LeftClick.add(Material.valueOf("SNOW_BALL"));
+            invoke2LeftClick.add(Material.valueOf("EYE_OF_ENDER"));
+        }
+        else{
+            invoke2LeftClick.add(Material.EXPERIENCE_BOTTLE);
+            invoke2LeftClick.add(Material.SNOWBALL);
+            invoke3LeftClick.add(Material.ENDER_EYE);
+        }
         invoke2LeftClick.add(Material.ENDER_PEARL);
 
-        invoke3LeftClick.add(Material.ENDER_EYE);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

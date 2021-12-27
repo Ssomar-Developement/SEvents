@@ -19,7 +19,7 @@ public class PlayerKillEntityListener implements Listener {
 
         Player p;
         if ((p = e.getEntity().getKiller()) != null) {
-            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p.getKiller(), e.getEntity());
+            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getEntity());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
         }
     }

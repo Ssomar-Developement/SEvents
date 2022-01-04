@@ -1,6 +1,7 @@
 package com.ssomar.sevents.events.projectile.hitblock;
 
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -16,18 +17,24 @@ public class ProjectileHitBlockEvent extends EntityEvent implements Cancellable 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
     private final Block block;
+    private final BlockFace blockFace;
 
     /**
      * @param entity The projectile.
      * @param block The block clicked, can be null
      */
-    public ProjectileHitBlockEvent(final Entity entity, final @NotNull  Block block){
+    public ProjectileHitBlockEvent(final Entity entity, final @NotNull  Block block, final @NotNull  BlockFace blockFace){
         super(entity);
         this.block = block;
+        this.blockFace = blockFace;
     }
 
     public Block getBlock() {
         return block;
+    }
+
+    public BlockFace getBlockFace() {
+        return blockFace;
     }
 
     @Override

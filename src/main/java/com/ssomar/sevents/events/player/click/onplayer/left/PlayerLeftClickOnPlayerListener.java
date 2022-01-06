@@ -19,11 +19,16 @@ import java.util.List;
 
 public class PlayerLeftClickOnPlayerListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
+            Player damager = (Player) e.getDamager();
+            if(damager.hasMetadata("cancelDamageEvent")){
+                return;
+            }
+
             if (e.getEntity() instanceof Player) {
-                PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent((Player) e.getDamager(), (Player) e.getEntity());
+                PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent(damager, (Player) e.getEntity());
                 Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnPlayerEvent);
                 if (playerLeftClickOnPlayerEvent.isCancelled()) {
                     e.setCancelled(true);

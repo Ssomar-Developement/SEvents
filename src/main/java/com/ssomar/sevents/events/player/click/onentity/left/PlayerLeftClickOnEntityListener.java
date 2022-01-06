@@ -12,9 +12,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class PlayerLeftClickOnEntityListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
+            Player damager = (Player) e.getDamager();
+            if(damager.hasMetadata("cancelDamageEvent")){
+                return;
+            }
+
             if (!(e.getEntity() instanceof Player)) {
                 PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());
                 Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);

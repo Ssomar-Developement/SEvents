@@ -16,7 +16,7 @@ public class PlayerReceiveHitGlobalListener implements Listener {
 
         if(!(e.getEntity() instanceof Player)) return;
 
-        PlayerReceiveHitGlobalEvent playerReceiveHitGlobalEvent = new PlayerReceiveHitGlobalEvent((Player) e.getEntity());
+        PlayerReceiveHitGlobalEvent playerReceiveHitGlobalEvent = new PlayerReceiveHitGlobalEvent((Player) e.getEntity(), e.getCause());
         Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitGlobalEvent);
         if (playerReceiveHitGlobalEvent.isCancelled()) {
             e.setCancelled(true);

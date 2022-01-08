@@ -1,8 +1,10 @@
 package com.ssomar.sevents.events.player.receivehit.global;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,12 +12,18 @@ public class PlayerReceiveHitGlobalEvent extends PlayerEvent implements Cancella
 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
+    private final EntityDamageEvent.DamageCause damageCause;
 
     /**
      * @param player The player who put on / removed the armor.
      */
-    public PlayerReceiveHitGlobalEvent(final Player player){
+    public PlayerReceiveHitGlobalEvent(final Player player, final EntityDamageEvent.DamageCause damageCause){
         super(player);
+        this.damageCause = damageCause;
+    }
+
+    public EntityDamageEvent.DamageCause getDamageCause() {
+        return damageCause;
     }
 
     /**

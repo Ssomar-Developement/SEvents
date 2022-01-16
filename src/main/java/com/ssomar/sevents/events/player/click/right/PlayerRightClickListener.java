@@ -34,7 +34,6 @@ public class PlayerRightClickListener implements Listener {
         else{
             invoke2LeftClick.add(Material.EXPERIENCE_BOTTLE);
             invoke2LeftClick.add(Material.SNOWBALL);
-            invoke2LeftClick.add(Material.PIG_SPAWN_EGG);
             invoke3LeftClick.add(Material.ENDER_EYE);
         }
         invoke2LeftClick.add(Material.ENDER_PEARL);
@@ -54,6 +53,9 @@ public class PlayerRightClickListener implements Listener {
             if(!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR")))
                 return;
         }
+
+        p.sendMessage("action: "+action);
+        e.setCancelled(true);
 
         if(!(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK))) {
             PlayerRightClickEvent playerRightClickEvent = new PlayerRightClickEvent((Player) e.getPlayer(), e.getClickedBlock(), e.getBlockFace());

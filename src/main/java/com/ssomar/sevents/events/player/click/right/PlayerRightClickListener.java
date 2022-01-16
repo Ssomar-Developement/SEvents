@@ -47,15 +47,15 @@ public class PlayerRightClickListener implements Listener {
         Action action = e.getAction();
         if(action.equals(Action.PHYSICAL)) return;
 
+        p.sendMessage("action: "+action);
+        e.setCancelled(true);
+
         EquipmentSlot equipSlot = e.getHand();
         if(equipSlot == null || (equipSlot.equals(EquipmentSlot.OFF_HAND))) {
             /* important pour que le right clik en off hand soit compté*/
             if(!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR")))
                 return;
         }
-
-        p.sendMessage("action: "+action);
-        e.setCancelled(true);
 
         if(!(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK))) {
             PlayerRightClickEvent playerRightClickEvent = new PlayerRightClickEvent((Player) e.getPlayer(), e.getClickedBlock(), e.getBlockFace());

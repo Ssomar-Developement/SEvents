@@ -53,7 +53,9 @@ public class PlayerRightClickListener implements Listener {
             /* important pour que le right clik en off hand soit compté*/
             if(!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR"))){
 
-                /* Temporary fix, cancel usage of spawn eggs in the offhand */
+                /* Temporary fix, cancel usage of spawn eggs in the offhand
+                * for EI create an activator with detailedSlot off hand and put /summon in commands
+                * */
                 if(p.getInventory().getItemInOffHand().getType().toString().contains("SPAWN_EGG")){
                     e.setCancelled(true);
                 }

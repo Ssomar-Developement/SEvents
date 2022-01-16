@@ -42,13 +42,11 @@ public class PlayerRightClickListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void playerInteractEvent(PlayerInteractEvent e) {
+
         Player p = e.getPlayer();
 
         Action action = e.getAction();
         if(action.equals(Action.PHYSICAL)) return;
-
-        p.sendMessage("action: "+action);
-        e.setCancelled(true);
 
         EquipmentSlot equipSlot = e.getHand();
         if(equipSlot == null || (equipSlot.equals(EquipmentSlot.OFF_HAND))) {

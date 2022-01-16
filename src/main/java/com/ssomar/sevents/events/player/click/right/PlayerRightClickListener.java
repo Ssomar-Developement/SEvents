@@ -34,6 +34,7 @@ public class PlayerRightClickListener implements Listener {
         else{
             invoke2LeftClick.add(Material.EXPERIENCE_BOTTLE);
             invoke2LeftClick.add(Material.SNOWBALL);
+            invoke2LeftClick.add(Material.PIG_SPAWN_EGG);
             invoke3LeftClick.add(Material.ENDER_EYE);
         }
         invoke2LeftClick.add(Material.ENDER_PEARL);

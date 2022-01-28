@@ -4,6 +4,7 @@ import com.ssomar.sevents.events.player.click.left.PlayerLeftClickEvent;
 import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,10 +23,14 @@ public class ProjectileHitBlockListener implements Listener {
     public void onProjectileHitEvent(ProjectileHitEvent e) {
         Entity projectile = e.getEntity();
 
+        BlockFace blockFace;
+        if(Version._1_12.is()) blockFace = BlockFace.UP;
+        else blockFace = e.getHitBlockFace();
+
         /* PROJECTILE_HIT_BLOCK PART */
         if (e.getHitBlock() != null) {
             Block b = e.getHitBlock();
-            ProjectileHitBlockEvent projectileHitBlockEvent = new ProjectileHitBlockEvent(projectile, b, e.getHitBlockFace());
+            ProjectileHitBlockEvent projectileHitBlockEvent = new ProjectileHitBlockEvent(projectile, b, blockFace);
             Bukkit.getServer().getPluginManager().callEvent(projectileHitBlockEvent);
             if (projectileHitBlockEvent.isCancelled()) {
                 e.setCancelled(true);

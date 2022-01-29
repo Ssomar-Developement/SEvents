@@ -23,7 +23,7 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
 
-        if (!(e instanceof EntityDamageByEntityEventExtension) || ((EntityDamageByEntityEventExtension) e).isAvoidLoop()) {
+        if (!(e instanceof EntityDamageByEntityEventExtension) || !((EntityDamageByEntityEventExtension) e).isAvoidLoop()) {
             if (e.getDamager() instanceof Player) {
                 Player damager = (Player) e.getDamager();
 

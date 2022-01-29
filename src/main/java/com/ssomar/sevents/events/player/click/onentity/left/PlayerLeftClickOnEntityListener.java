@@ -16,7 +16,7 @@ public class PlayerLeftClickOnEntityListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
 
-        if (!(e instanceof EntityDamageByEntityEventExtension) || ((EntityDamageByEntityEventExtension) e).isAvoidLoop()) {
+        if (!(e instanceof EntityDamageByEntityEventExtension) || !((EntityDamageByEntityEventExtension) e).isAvoidLoop()) {
             if (e.getDamager() instanceof Player) {
                 if (!(e.getEntity() instanceof Player)) {
                     PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());

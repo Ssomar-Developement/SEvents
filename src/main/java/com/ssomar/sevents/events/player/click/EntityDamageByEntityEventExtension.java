@@ -13,8 +13,9 @@ public class EntityDamageByEntityEventExtension extends EntityDamageByEntityEven
 
     private boolean isAvoidLoop = false;
 
-    public EntityDamageByEntityEventExtension(@NotNull Entity damager, @NotNull Entity damagee, @NotNull EntityDamageEvent.DamageCause cause, @NotNull Map<DamageModifier, Double> modifiers, @NotNull Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
-        super(damager, damagee, cause, modifiers, modifierFunctions);
+    public EntityDamageByEntityEventExtension(@NotNull Entity damager, @NotNull Entity damagee, @NotNull EntityDamageEvent.DamageCause cause, double damage, boolean isAvoidLoop) {
+        super(damager, damagee, cause, damage);
+        this.isAvoidLoop = isAvoidLoop;
     }
 
 

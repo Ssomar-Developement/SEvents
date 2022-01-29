@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.click.onentity.left;
 
+import com.ssomar.sevents.events.player.click.EntityDamageByEntityEventExtension;
 import com.ssomar.sevents.events.player.click.onplayer.left.PlayerLeftClickOnPlayerEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,12 +15,10 @@ public class PlayerLeftClickOnEntityListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof Player) {
-            Player damager = (Player) e.getDamager();
-            if(damager.hasMetadata("cancelDamageEvent")){
-                return;
-            }
 
+        if(e instanceof EntityDamageByEntityEventExtension && ((EntityDamageByEntityEventExtension)e).isAvoidLoop()) return;
+
+        if (e.getDamager() instanceof Player) {
             if (!(e.getEntity() instanceof Player)) {
                 PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());
                 Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);

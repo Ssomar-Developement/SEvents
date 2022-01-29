@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.click.onplayer.left;
 
+import com.ssomar.sevents.events.player.click.EntityDamageByEntityEventExtension;
 import com.ssomar.sevents.events.player.click.onplayer.right.PlayerRightClickOnPlayerEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
@@ -21,11 +22,11 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
+
+        if(e instanceof EntityDamageByEntityEventExtension && ((EntityDamageByEntityEventExtension)e).isAvoidLoop()) return;
+
         if (e.getDamager() instanceof Player) {
             Player damager = (Player) e.getDamager();
-            if(damager.hasMetadata("cancelDamageEvent")){
-                return;
-            }
 
             if (e.getEntity() instanceof Player) {
                 PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent(damager, (Player) e.getEntity());

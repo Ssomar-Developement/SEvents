@@ -48,6 +48,7 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onplayer\right\SPlayerRightClickOnPlayerEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\projectile\hitplayer\ProjectileHitPlayerEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityEvent.java
+C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\EntityDamageByEntityEventExtension.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\left\SPlayerLeftClickEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\right\SPlayerRightClickEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\jump\PlayerJumpEvent.java

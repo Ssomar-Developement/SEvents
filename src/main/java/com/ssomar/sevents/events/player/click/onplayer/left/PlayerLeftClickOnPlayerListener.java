@@ -13,10 +13,10 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
 
-        if (PlayerLeftClickOnEntityListener.checkExtensionEvent(e)) return;
-
         if (e.getDamager() instanceof Player) {
-            Player damager = (Player) e.getDamager();
+            Player damager = (Player)e.getDamager();
+            if (damager.hasMetadata("cancelDamageEvent"))
+                return;
 
             if (e.getEntity() instanceof Player) {
                 PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent(damager, (Player) e.getEntity());

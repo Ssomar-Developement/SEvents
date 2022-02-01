@@ -18,7 +18,7 @@ public class PlayerBeforeDeathListener implements Listener {
 
         Player p = (Player)e.getEntity();
 
-        if (p.getHealth() <= e.getDamage()) {
+        if (p.getHealth() <= e.getFinalDamage()) {
             PlayerBeforeDeathEvent playerBeforeDeathEvent = new PlayerBeforeDeathEvent(p);
             Bukkit.getServer().getPluginManager().callEvent(playerBeforeDeathEvent);
             if (playerBeforeDeathEvent.isCancelled()) {

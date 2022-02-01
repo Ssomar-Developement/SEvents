@@ -1,8 +1,7 @@
 package com.ssomar.sevents.events.player.click.onplayer.left;
 
-import com.ssomar.sevents.events.player.click.EntityDamageByEntityEventExtension;
+import com.ssomar.sevents.events.player.click.onentity.left.PlayerLeftClickOnEntityListener;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,15 +13,7 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
 
-        if (e instanceof EntityDamageByEntityEventExtension && ((EntityDamageByEntityEventExtension) e).isAvoidLoop()) {
-            if (e.getEntity() instanceof LivingEntity) {
-                LivingEntity ent = (LivingEntity) e.getEntity();
-                ent.damage(e.getDamage());
-                ent.setLastDamage(e.getDamage());
-                ent.setLastDamageCause(e);
-            }
-            return;
-        }
+        if (PlayerLeftClickOnEntityListener.checkExtensionEvent(e)) return;
 
         if (e.getDamager() instanceof Player) {
             Player damager = (Player) e.getDamager();

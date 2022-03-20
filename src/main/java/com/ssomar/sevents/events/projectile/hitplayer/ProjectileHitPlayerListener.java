@@ -17,7 +17,6 @@ public class ProjectileHitPlayerListener implements Listener {
 
         /* PROJECTILE_HIT_BLOCK PART */
         if ((target = e.getHitEntity()) != null && target instanceof Player) {
-            Block b = e.getHitBlock();
             ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
             Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
             if (projectileHitPlayerEvent.isCancelled()) {

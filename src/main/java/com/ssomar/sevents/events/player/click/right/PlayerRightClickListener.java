@@ -27,6 +27,7 @@ public class PlayerRightClickListener implements Listener {
 
         invoke2LeftClick.add(Material.SPLASH_POTION);
         invoke2LeftClick.add(Material.KNOWLEDGE_BOOK);
+        invoke2LeftClick.add(Material.WRITTEN_BOOK);
         if(Version._1_12.is()){
             invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
             invoke2LeftClick.add(Material.valueOf("SNOW_BALL"));

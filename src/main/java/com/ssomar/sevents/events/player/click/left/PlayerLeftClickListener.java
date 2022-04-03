@@ -77,7 +77,7 @@ public class PlayerLeftClickListener implements Listener {
         Player p = e.getPlayer();
 
         /* Not in this version */
-        /*if (!(Version._1_12.is() || Version._1_13.is() || Version._1_14.is())) {
+        if (!(Version._1_12.is() || Version._1_13.is() || Version._1_14.is())) {
 
             Block b = p.getTargetBlock(null, 5);
 
@@ -129,15 +129,12 @@ public class PlayerLeftClickListener implements Listener {
                 // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
                 cancel = true;
             }
-        }*/
-        if(Version._1_18.is()){
-            //System.out.println("IS 1 18");
-            cancel = true;
         }
+
 
         if (cancel) {
             //System.out.println("ADD CANCEL INTERACT");
-            //cancelInteraction.add(p.getUniqueId());
+            cancelInteraction.add(p.getUniqueId());
         }
     }
 }

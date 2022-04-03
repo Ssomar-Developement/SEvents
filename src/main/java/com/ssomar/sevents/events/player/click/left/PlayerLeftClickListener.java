@@ -70,7 +70,7 @@ public class PlayerLeftClickListener implements Listener {
     }
 
     /* To block the weird click generates by the drop */
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerDropItemEvent(PlayerDropItemEvent e) {
 
         boolean cancel = false;

@@ -137,7 +137,7 @@ public class PlayerLeftClickListener implements Listener {
 
         if (cancel) {
             //System.out.println("ADD CANCEL INTERACT");
-            cancelInteraction.add(p.getUniqueId());
+            //cancelInteraction.add(p.getUniqueId());
         }
     }
 }

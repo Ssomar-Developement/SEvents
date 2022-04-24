@@ -39,7 +39,7 @@ public class PlayerRightClickListener implements Listener {
         }
         invoke2LeftClick.add(Material.ENDER_PEARL);
 
-        if(Version._1_11.is() || Version._1_10.is() || Version._1_9.is() || Version._1_8.is()){
+        if(!(Version._1_11.is() || Version._1_10.is() || Version._1_9.is() || Version._1_8.is())){
             invoke2LeftClick.add(Material.SPLASH_POTION);
             invoke2LeftClick.add(Material.KNOWLEDGE_BOOK);
         }

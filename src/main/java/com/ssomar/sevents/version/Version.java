@@ -3,6 +3,10 @@ package com.ssomar.sevents.version;
 import org.bukkit.Bukkit;
 
 public enum Version {
+    _1_8,
+    _1_9,
+    _1_10,
+    _1_11,
     _1_12,
     _1_13,
     _1_14,
@@ -13,6 +17,14 @@ public enum Version {
 
     public boolean is(){
         switch (this){
+            case _1_8:
+                return Bukkit.getServer().getVersion().contains("1.8");
+            case _1_9:
+                return Bukkit.getServer().getVersion().contains("1.9");
+            case _1_10:
+                return Bukkit.getServer().getVersion().contains("1.10");
+            case _1_11:
+                return Bukkit.getServer().getVersion().contains("1.11");
             case _1_12:
                 return Bukkit.getServer().getVersion().contains("1.12");
             case _1_13:

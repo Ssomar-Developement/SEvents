@@ -26,7 +26,7 @@ public class PlayerRightClickListener implements Listener {
         invoke3LeftClick = new ArrayList<>();
 
         invoke2LeftClick.add(Material.WRITTEN_BOOK);
-        if(Version._1_12.is()){
+        if(Version._1_11.is() || Version._1_10.is() || Version._1_9.is() || Version._1_8.is() || Version._1_12.is()){
             invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
             invoke2LeftClick.add(Material.valueOf("SNOW_BALL"));
             invoke2LeftClick.add(Material.valueOf("EYE_OF_ENDER"));

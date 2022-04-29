@@ -24,7 +24,7 @@ public class ProjectileHitBlockListener implements Listener {
         Entity projectile = e.getEntity();
 
         BlockFace blockFace;
-        if(Version._1_12.is()) blockFace = BlockFace.UP;
+        if(Version.is1v12Less()) blockFace = BlockFace.UP;
         else blockFace = e.getHitBlockFace();
 
         /* PROJECTILE_HIT_BLOCK PART */

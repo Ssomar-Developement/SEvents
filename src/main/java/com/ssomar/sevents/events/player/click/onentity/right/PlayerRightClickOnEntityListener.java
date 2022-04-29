@@ -24,7 +24,7 @@ public class PlayerRightClickOnEntityListener implements Listener {
     @EventHandler
     public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent e) {
 
-        if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
+        if(!Version.is1v11Less() && e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 
         if(!(e.getRightClicked() instanceof Player)) {
             PlayerRightClickOnEntityEvent playerRightClickOnEntityEvent = new PlayerRightClickOnEntityEvent((Player) e.getPlayer(), e.getRightClicked());
@@ -33,7 +33,7 @@ public class PlayerRightClickOnEntityListener implements Listener {
                 e.setCancelled(true);
             }
             /* Gold on Piglin generates a LEFT_CLICK event */
-            if(!Version._1_12.is() && !Version._1_13.is() && !Version._1_14.is() && !Version._1_15.is() && e.getRightClicked().getType().equals(EntityType.PIGLIN)){
+            if(Version.is1v16Plus() && e.getRightClicked().getType().equals(EntityType.PIGLIN)){
                 Player p = e.getPlayer();
                 PlayerInventory pInv = p.getInventory();
                 ItemStack item;

@@ -14,7 +14,7 @@ public class PlayerFishBlockListener implements Listener {
 
     @EventHandler
     public void onPlayerFishEvent(PlayerFishEvent e) {
-        if (e.getState().equals(PlayerFishEvent.State.IN_GROUND) && !Version._1_12.is()) {
+        if (e.getState().equals(PlayerFishEvent.State.IN_GROUND) && !Version.is1v12Less()) {
             Location loc = e.getHook().getLocation();
             loc.subtract(0, 1, 0);
 

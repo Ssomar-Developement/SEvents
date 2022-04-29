@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.click.onplayer.right;
 
+import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,7 @@ public class PlayerRightClickOnPlayerListener implements Listener {
     @EventHandler
     public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent e) {
 
-        if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
+        if(!Version.is1v11Less() && e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 
         if(e.getRightClicked() instanceof Player) {
             PlayerRightClickOnPlayerEvent playerRightClickOnPlayerEvent = new PlayerRightClickOnPlayerEvent((Player) e.getPlayer(), (Player) e.getRightClicked());

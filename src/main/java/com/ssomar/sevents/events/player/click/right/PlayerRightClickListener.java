@@ -26,7 +26,7 @@ public class PlayerRightClickListener implements Listener {
         invoke3LeftClick = new ArrayList<>();
 
         invoke2LeftClick.add(Material.WRITTEN_BOOK);
-        if(Version._1_11.is() || Version._1_10.is() || Version._1_9.is() || Version._1_8.is() || Version._1_12.is()){
+        if(Version.is1v12Less()){
             invoke2LeftClick.add(Material.valueOf("EXP_BOTTLE"));
             invoke2LeftClick.add(Material.valueOf("SNOW_BALL"));
             invoke2LeftClick.add(Material.valueOf("EYE_OF_ENDER"));
@@ -39,7 +39,7 @@ public class PlayerRightClickListener implements Listener {
         }
         invoke2LeftClick.add(Material.ENDER_PEARL);
 
-        if(!(Version._1_11.is() || Version._1_10.is() || Version._1_9.is() || Version._1_8.is())){
+        if(!Version.is1v11Less()){
             invoke2LeftClick.add(Material.SPLASH_POTION);
             invoke2LeftClick.add(Material.KNOWLEDGE_BOOK);
         }
@@ -53,20 +53,21 @@ public class PlayerRightClickListener implements Listener {
         Action action = e.getAction();
         if(action.equals(Action.PHYSICAL)) return;
 
-        EquipmentSlot equipSlot = e.getHand();
-        if(equipSlot == null || (equipSlot.equals(EquipmentSlot.OFF_HAND))) {
-            /* important pour que le right clik en off hand soit compté*/
-            if(!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR"))){
+        if(!Version.is1v11Less()) {
+            EquipmentSlot equipSlot = e.getHand();
+            if (equipSlot == null || (equipSlot.equals(EquipmentSlot.OFF_HAND))) {
+                /* important pour que le right clik en off hand soit compté*/
+                if (!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR"))) {
 
-                /* Temporary fix, cancel usage of spawn eggs in the offhand
-                * for EI create an activator with detailedSlot off hand and put /summon in commands
-                * */
-                if(p.getInventory().getItemInOffHand().getType().toString().contains("SPAWN_EGG")){
-                    e.setCancelled(true);
+                    /* Temporary fix, cancel usage of spawn eggs in the offhand
+                     * for EI create an activator with detailedSlot off hand and put /summon in commands
+                     * */
+                    if (p.getInventory().getItemInOffHand().getType().toString().contains("SPAWN_EGG")) {
+                        e.setCancelled(true);
+                    }
+                    return;
                 }
-                return;
             }
-
         }
 
         if(!(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK))) {

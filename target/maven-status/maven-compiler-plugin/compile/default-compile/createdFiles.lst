@@ -91,7 +91,6 @@ com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorListener.class
 com\ssomar\sevents\events\player\fish\fish\PlayerFishFishEvent.class
 com\ssomar\sevents\events\player\sprint\desactive\PlayerDesactiveSprintEvent.class
 com\ssomar\sevents\events\player\fish\fish\PlayerFishFishListener.class
-com\ssomar\sevents\version\Version$1.class
 com\ssomar\sevents\registration\Registration.class
 com\ssomar\sevents\events\player\click\left\SPlayerLeftClickEvent.class
 com\ssomar\sevents\version\Version.class

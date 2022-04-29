@@ -2,6 +2,7 @@ package com.ssomar.sevents.registration;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEventFactory;
+import com.ssomar.sevents.version.Version;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +20,7 @@ public class DynamicRegistration {
 
     public DynamicRegistration() {
         registered = new HashMap<>();
+        Version.initVersion();
     }
 
     public void register(EventName eventName, JavaPlugin plugin) {

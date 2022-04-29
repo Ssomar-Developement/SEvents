@@ -77,7 +77,7 @@ public class PlayerLeftClickListener implements Listener {
         Player p = e.getPlayer();
 
         /* Not in this version */
-        if (!(Version._1_12.is() || Version._1_13.is() || Version._1_14.is())) {
+        if (!(Version.is1v13Less() || Version.is1v14())) {
 
             Block b = p.getTargetBlock(null, 5);
 

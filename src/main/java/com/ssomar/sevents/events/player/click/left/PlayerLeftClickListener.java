@@ -14,6 +14,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -68,73 +69,30 @@ public class PlayerLeftClickListener implements Listener {
             }
         }
     }
-
+    
     /* To block the weird click generates by the drop */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerDropItemEvent(PlayerDropItemEvent e) {
 
-        boolean cancel = false;
         Player p = e.getPlayer();
 
         /* Not in this version */
-        if (!(Version.is1v13Less() || Version.is1v14())) {
+        if (!Version.is1v13Less() || Version.is1v14()) {
 
-            Block b = p.getTargetBlock(null, 5);
-
-            Location pLoc = p.getLocation();
-            pLoc.add(0, 1, 0);
-
-            double distance = pLoc.distance(b.getLocation());
-
-            if (b.getType() != Material.AIR) {
-
-                if (distance < 5.3 && distance >= 5.0) {
-
-                    float pitch = pLoc.getPitch();
-                    float yaw = pLoc.getYaw();
-
-                    if (yaw > 225 && yaw < 315) {
-                        if ((267 <= yaw && yaw <= 273) && (-3 <= pitch && pitch <= 3)) {
-
-                        } else {
-
-                            cancel = true;
-                        }
-                    } else if (yaw > 315 || yaw < 45) {
-                        if ((357 >= yaw || yaw <= 3) && (-3 <= pitch && pitch <= 3)) {
-
-                        } else {
-
-                            cancel = true;
-                        }
-                    } else if (yaw > 45 && yaw < 135) {
-                        if ((89 <= yaw && yaw <= 93) && (-3 <= pitch && pitch <= 3)) {
-
-                        } else {
-
-                            cancel = true;
-                        }
-                    } else if (yaw > 135 && yaw < 225) {
-                        if ((177 <= yaw && yaw <= 183) && (-3 <= pitch && pitch <= 3)) {
-
-                        } else {
-
-                            cancel = true;
-                        }
+            Location eyeLoc = p.getEyeLocation().clone();
+            for (double j = 0; j <= 5; j += 0.1) {
+                Vector vec = eyeLoc.getDirection();
+                Location newLoc = eyeLoc.clone().add(vec.multiply(j));
+                Block b2 = newLoc.getBlock();
+                if (!b2.isEmpty()) {
+                    if (b2.getBoundingBox().contains(newLoc.getX(), newLoc.getY(), newLoc.getZ())) {
+                        //SsomarDev.testMsg("Block: " + b2.getType() + " >>" + j);
+                        return;
                     }
-
                 }
-                // else somarDev.testMsg(">>>>>>>>>>>>>>> PAS ICI");
-            } else {
-                // SsomarDev.testMsg(">>>>>>>>>>>>>>> ON BLOCK ICI");
-                cancel = true;
             }
-        }
-
-
-        if (cancel) {
-            //System.out.println("ADD CANCEL INTERACT");
             cancelInteraction.add(p.getUniqueId());
+            return;
         }
     }
 }

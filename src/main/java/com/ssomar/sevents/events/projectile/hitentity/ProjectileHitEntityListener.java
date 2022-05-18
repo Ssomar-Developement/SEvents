@@ -17,7 +17,7 @@ public class ProjectileHitEntityListener implements Listener {
     public void onProjectileHitEvent(ProjectileHitEvent e) {
         Entity projectile = e.getEntity();
         Entity target;
-
+ 
         if(!Version.is1v11Less()) {
             /* PROJECTILE_HIT_BLOCK PART */
             if ((target = e.getHitEntity()) != null && !(target instanceof Player)) {

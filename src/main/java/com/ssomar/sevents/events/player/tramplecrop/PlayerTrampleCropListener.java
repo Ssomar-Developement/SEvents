@@ -1,4 +1,4 @@
-package com.ssomar.sevents.events.player.tramplecrops;
+package com.ssomar.sevents.events.player.tramplecrop;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

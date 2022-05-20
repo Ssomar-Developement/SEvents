@@ -26,6 +26,7 @@ import com.ssomar.sevents.events.player.sneak.active.SPlayerActiveSneakEvent;
 import com.ssomar.sevents.events.player.sneak.desactive.SPlayerDesactiveSneakEvent;
 import com.ssomar.sevents.events.player.sprint.active.SPlayerActiveSprintEvent;
 import com.ssomar.sevents.events.player.sprint.desactive.SPlayerDesactiveSprintEvent;
+import com.ssomar.sevents.events.player.tramplecrops.SPlayerTrampleCropEvent;
 import com.ssomar.sevents.events.projectile.hitblock.SProjectileHitBlockEvent;
 import com.ssomar.sevents.events.projectile.hitentity.SProjectileHitEntityEvent;
 import com.ssomar.sevents.events.projectile.hitplayer.SProjectileHitPlayerEvent;
@@ -97,6 +98,9 @@ public class SEventFactory {
 
             case PLAYER_PRESS_PLATE_EVENT:
                 return new SPlayerPressPlateEvent();
+
+            case PLAYER_TRAMPLE_CROP_EVENT:
+                return new SPlayerTrampleCropEvent();
 
             case PROJECTILE_HIT_BLOCK:
                 return new SProjectileHitBlockEvent();

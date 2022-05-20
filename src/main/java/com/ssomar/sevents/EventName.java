@@ -30,6 +30,7 @@ public enum EventName {
     PLAYER_ACTIVE_SPRINT_EVENT("PlayerActiveSprintEvent"),
     PLAYER_DESACTIVE_SPRINT_EVENT("PlayerDesactiveSprintEvent"),
     PLAYER_PRESS_PLATE_EVENT("PlayerPressPlateEvent"),
+    PLAYER_TRAMPLE_CROP_EVENT("PlayerTrampleCropEvent"),
     PROJECTILE_HIT_BLOCK("ProjectileHitBlockEvent"),
     PROJECTILE_HIT_ENTITY("ProjectileHitEntityEvent"),
     PROJECTILE_HIT_PLAYER("ProjectileHitPlayerEvent");

@@ -249,20 +249,6 @@ public class PlayerEquipArmorListener implements Listener {
         }
     }
 
-    @EventHandler
-    public void dispenseArmorEvent(BlockDispenseArmorEvent event){
-        ArmorType type = ArmorType.matchType(event.getItem(), false);
-        if(type != null){
-            if(event.getTargetEntity() instanceof Player){
-                PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent((Player)event.getTargetEntity(), PlayerEquipArmorEvent.EquipMethod.DISPENSER, type, null, event.getItem());
-                Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
-                if(armorEquipEvent.isCancelled()){
-                    event.setCancelled(true);
-                }
-            }
-        }
-    }
-
     /**
      * A utility method to support versions that use null or air ItemStacks.
      */

@@ -16,9 +16,9 @@ public class Registration {
     /* The other plugins that uses this listener */
     private List<JavaPlugin> plugins;
 
-    private Listener listener;
+    private List<Listener> listener;
 
-    public Registration(JavaPlugin plugin, Listener listener){
+    public Registration(JavaPlugin plugin,List<Listener> listener){
         this.host = plugin;
         this.plugins = new ArrayList<>();
         this.listener = listener;
@@ -41,14 +41,18 @@ public class Registration {
     }
 
     public void register(){
-        host.getServer().getPluginManager().registerEvents(listener, host);
+        for(Listener l : listener){
+            host.getServer().getPluginManager().registerEvents(l, host);
+        }
     }
 
     public void unregister(){
-        HandlerList.unregisterAll(listener);
+        for(Listener l : listener){
+            HandlerList.unregisterAll(l);
+        }
     }
 
-    public Listener getListener() {
+    public List<Listener> getListener() {
         return listener;
     }
 

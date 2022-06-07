@@ -13,5 +13,6 @@ public abstract class SEvent {
         this.eventName = eventName;
     }
 
-    public abstract Listener getChildListener();
+    public abstract List<Listener> getChildListener();
+
 }

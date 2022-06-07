@@ -26,7 +26,7 @@ public class DynamicRegistration {
     public void register(EventName eventName, JavaPlugin plugin) {
         if (!registered.containsKey(eventName)) {
             SEventFactory factory = new SEventFactory();
-            Listener listener = factory.getSEvent(eventName).getChildListener();
+            List<Listener> listener = factory.getSEvent(eventName).getChildListener();
             Registration registration;
             registered.put(eventName, (registration = new Registration(plugin, listener)));
             registration.register();

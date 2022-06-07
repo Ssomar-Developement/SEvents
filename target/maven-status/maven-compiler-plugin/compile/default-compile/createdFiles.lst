@@ -27,12 +27,14 @@ com\ssomar\sevents\events\player\fish\fish\SPlayerFishFishEvent.class
 com\ssomar\sevents\events\player\fish\player\SPlayerFishPlayerEvent.class
 com\ssomar\sevents\events\player\fish\player\PlayerFishPlayerListener.class
 com\ssomar\sevents\events\player\click\onplayer\left\PlayerLeftClickOnPlayerListener.class
+com\ssomar\sevents\events\player\tramplecrop\SPlayerTrampleCropEvent.class
 com\ssomar\sevents\events\player\fish\entity\SPlayerFishEntityEvent.class
 com\ssomar\sevents\events\player\beforedeath\PlayerBeforeDeathEvent.class
 com\ssomar\sevents\events\player\fish\block\SPlayerFishBlockEvent.class
 com\ssomar\sevents\events\player\kill\entity\PlayerKillEntityListener.class
 com\ssomar\sevents\events\player\sprint\desactive\SPlayerDesactiveSprintEvent.class
 com\ssomar\sevents\events\player\fish\block\PlayerFishBlockEvent.class
+com\ssomar\sevents\events\player\tramplecrop\PlayerTrampleCropEvent.class
 com\ssomar\sevents\events\player\equip\armor\SPlayerEquipArmorEvent.class
 com\ssomar\sevents\events\player\receivehit\global\PlayerReceiveHitGlobalListener.class
 com\ssomar\sevents\events\player\click\right\SPlayerRightClickEvent.class
@@ -57,6 +59,7 @@ com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityEve
 com\ssomar\sevents\SEventFactory.class
 com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorEvent$EquipMethod.class
 com\ssomar\sevents\events\player\fish\block\PlayerFishBlockListener.class
+com\ssomar\sevents\events\player\tramplecrop\PlayerTrampleCropListener.class
 com\ssomar\sevents\events\player\fish\nothing\SPlayerFishNothingEvent.class
 com\ssomar\sevents\events\player\receivehit\byentity\SPlayerReceiveHitByEntityEvent.class
 com\ssomar\sevents\events\player\fly\active\PlayerActiveFlyEvent.class
@@ -86,6 +89,7 @@ com\ssomar\sevents\events\player\beforedeath\PlayerBeforeDeathListener.class
 com\ssomar\sevents\events\player\kill\player\PlayerKillPlayerEvent.class
 com\ssomar\sevents\events\projectile\hitplayer\SProjectileHitPlayerEvent.class
 com\ssomar\sevents\events\player\click\left\PlayerLeftClickEvent.class
+com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorListenerAbove112.class
 com\ssomar\sevents\events\player\click\onentity\right\PlayerRightClickOnEntityEvent.class
 com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorListener.class
 com\ssomar\sevents\events\player\fish\fish\PlayerFishFishEvent.class

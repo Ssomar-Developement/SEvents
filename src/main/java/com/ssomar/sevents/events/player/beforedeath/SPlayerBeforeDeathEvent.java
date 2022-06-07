@@ -4,6 +4,10 @@ import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;
 import org.bukkit.event.Listener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class SPlayerBeforeDeathEvent extends SEvent {
 
     public SPlayerBeforeDeathEvent() {
@@ -11,7 +15,7 @@ public class SPlayerBeforeDeathEvent extends SEvent {
     }
 
     @Override
-    public Listener getChildListener() {
-        return new PlayerBeforeDeathListener();
+    public List<Listener> getChildListener() {
+        return new ArrayList<>(Arrays.asList(new PlayerBeforeDeathListener()));
     }
 }

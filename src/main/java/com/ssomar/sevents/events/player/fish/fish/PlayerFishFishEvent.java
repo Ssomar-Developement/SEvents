@@ -11,7 +11,8 @@ public class PlayerFishFishEvent extends PlayerEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
-    private final Entity caught;
+    private Entity caught;
+    private int amount;
 
     /**
      * @param player The player who put on / removed the armor.
@@ -24,6 +25,18 @@ public class PlayerFishFishEvent extends PlayerEvent implements Cancellable {
 
     public Entity getCaught() {
         return caught;
+    }
+
+    public void setCaught(Entity caught) {
+        this.caught = caught;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override

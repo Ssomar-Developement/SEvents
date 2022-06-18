@@ -16,6 +16,8 @@ public class PlayerFishFishListener implements Listener {
         if (e.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
             PlayerFishFishEvent playerFishFishEvent = new PlayerFishFishEvent((Player) e.getPlayer(), e.getCaught());
             Bukkit.getServer().getPluginManager().callEvent(playerFishFishEvent);
+            if(playerFishFishEvent.getCaught().isEmpty()) e.getCaught().remove();
+            e.setExpToDrop(playerFishFishEvent.getAmount());
             if (playerFishFishEvent.isCancelled()) {
                 e.setCancelled(true);
             }

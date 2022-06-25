@@ -27,7 +27,7 @@ public class PlayerReceiveHitByPlayerListener implements Listener {
             }
 
             if (e.getEntity() instanceof Player) {
-                PlayerReceiveHitByPlayerEvent playerReceiveHitByPlayerEvent = new PlayerReceiveHitByPlayerEvent((Player) e.getEntity(), (Player) e.getDamager());
+                PlayerReceiveHitByPlayerEvent playerReceiveHitByPlayerEvent = new PlayerReceiveHitByPlayerEvent((Player) e.getEntity(), (Player) e.getDamager(), e.getCause());
                 Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitByPlayerEvent);
                 if (playerReceiveHitByPlayerEvent.isCancelled()) {
                     e.setCancelled(true);

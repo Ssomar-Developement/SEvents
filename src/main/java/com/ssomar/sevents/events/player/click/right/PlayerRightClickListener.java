@@ -45,7 +45,8 @@ public class PlayerRightClickListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    /* I need to be in MONITOR here because CrazyCrates has is one with HIGHTEST , and I need that my event check if the event of CrazyCrates is cancelled or not */
+    @EventHandler(priority = EventPriority.MONITOR)
     public void playerInteractEvent(PlayerInteractEvent e) {
 
         Player p = e.getPlayer();

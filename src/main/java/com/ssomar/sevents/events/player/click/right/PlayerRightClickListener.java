@@ -70,7 +70,7 @@ public class PlayerRightClickListener implements Listener {
             }
         }
 
-        if(!(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK))) {
+        if(!(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK)) && !e.isCancelled()) {
             PlayerRightClickEvent playerRightClickEvent = new PlayerRightClickEvent((Player) e.getPlayer(), e.getClickedBlock(), e.getBlockFace());
             Bukkit.getServer().getPluginManager().callEvent(playerRightClickEvent);
             if (playerRightClickEvent.isCancelled()) {

@@ -5,6 +5,7 @@ import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -72,7 +73,7 @@ public class PlayerRightClickListener implements Listener {
         }
 
         if(!(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK))) {
-            PlayerRightClickEvent playerRightClickEvent = new PlayerRightClickEvent((Player) e.getPlayer(), e.getClickedBlock(), e.getBlockFace(), e.isCancelled());
+            PlayerRightClickEvent playerRightClickEvent = new PlayerRightClickEvent((Player) e.getPlayer(), e.getClickedBlock(), e.getBlockFace(), e.useItemInHand().equals(Event.Result.DENY));
             Bukkit.getServer().getPluginManager().callEvent(playerRightClickEvent);
             if (playerRightClickEvent.isCancelled()) {
                 e.setCancelled(true);

@@ -53,7 +53,7 @@ public class PlayerRightClickEvent extends PlayerEvent implements Cancellable {
 
 
     public boolean isSourceCancelled() {
-        return cancel;
+        return sourceCancelled;
     }
 
 

@@ -16,15 +16,17 @@ public class PlayerRightClickEvent extends PlayerEvent implements Cancellable {
     private boolean cancel = false;
     private final Block block;
     private final BlockFace blockFace;
+    private final Boolean sourceCancelled;
 
     /**
      * @param player The player who put on / removed the armor.
      * @param block The block clicked, can be null
      */
-    public PlayerRightClickEvent(final Player player, final @Nullable  Block block, @NotNull BlockFace blockFace){
+    public PlayerRightClickEvent(final Player player, final @Nullable  Block block, @NotNull BlockFace blockFace, @NotNull Boolean sourceCancelled) {
         super(player);
         this.block = block;
         this.blockFace = blockFace;
+        this.sourceCancelled = sourceCancelled;
     }
 
     @Nullable
@@ -48,6 +50,12 @@ public class PlayerRightClickEvent extends PlayerEvent implements Cancellable {
     public void setCancelled(boolean cancel) {
         this.cancel = cancel;
     }
+
+
+    public boolean isSourceCancelled() {
+        return cancel;
+    }
+
 
     /**
      * Gets a list of handlers handling this event.

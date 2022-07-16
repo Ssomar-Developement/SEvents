@@ -1,8 +1,6 @@
 package com.ssomar.sevents.events.player.fish.fish;
 
-import com.ssomar.sevents.events.player.fish.player.PlayerFishPlayerEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,9 +12,9 @@ public class PlayerFishFishListener implements Listener {
     public void onPlayerFishEvent(PlayerFishEvent e) {
 
         if (e.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
-            PlayerFishFishEvent playerFishFishEvent = new PlayerFishFishEvent((Player) e.getPlayer(), e.getCaught());
+            PlayerFishFishEvent playerFishFishEvent = new PlayerFishFishEvent((Player) e.getPlayer(), e.getCaught(), e.getExpToDrop());
             Bukkit.getServer().getPluginManager().callEvent(playerFishFishEvent);
-            if(playerFishFishEvent.getCaught().isDead()) e.getCaught().remove();
+            if (playerFishFishEvent.getCaught().isDead()) e.getCaught().remove();
             e.setExpToDrop(playerFishFishEvent.getAmount());
             if (playerFishFishEvent.isCancelled()) {
                 e.setCancelled(true);

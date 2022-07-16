@@ -18,9 +18,10 @@ public class PlayerFishFishEvent extends PlayerEvent implements Cancellable {
      * @param player The player who put on / removed the armor.
      * @param fish The fish entity caught
      */
-    public PlayerFishFishEvent(final Player player, final @NotNull Entity fish){
+    public PlayerFishFishEvent(final Player player, final @NotNull Entity fish, int amount){
         super(player);
         this.caught = fish;
+        this.amount = amount;
     }
 
     public Entity getCaught() {

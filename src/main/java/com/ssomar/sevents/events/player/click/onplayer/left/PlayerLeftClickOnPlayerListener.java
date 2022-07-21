@@ -1,6 +1,6 @@
 package com.ssomar.sevents.events.player.click.onplayer.left;
 
-import com.ssomar.sevents.events.player.click.onentity.left.PlayerLeftClickOnEntityListener;
+import com.ssomar.sevents.events.player.click.onentity.left.PlayerLeftClickOnEntityEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,15 +14,27 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
 
         if (e.getDamager() instanceof Player) {
-            Player damager = (Player)e.getDamager();
+
+            Player damager = (Player) e.getDamager();
             if (damager.hasMetadata("cancelDamageEvent"))
                 return;
 
             if (e.getEntity() instanceof Player) {
-                PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent(damager, (Player) e.getEntity());
-                Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnPlayerEvent);
-                if (playerLeftClickOnPlayerEvent.isCancelled()) {
-                    e.setCancelled(true);
+
+                /* NPC is not a player O_o */
+                if (e.getEntity().hasMetadata("NPC")){
+                    PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());
+                    Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);
+                    if (playerLeftClickOnEntityEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
+                }
+                else {
+                    PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent(damager, (Player) e.getEntity());
+                    Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnPlayerEvent);
+                    if (playerLeftClickOnPlayerEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
                 }
             }
         }

@@ -22,10 +22,20 @@ public class ProjectileHitPlayerListener implements Listener {
         if(!Version.is1v11Less()) {
             /* PROJECTILE_HIT_BLOCK PART */
             if ((target = e.getHitEntity()) != null && target instanceof Player) {
-                ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
-                Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
-                if (projectileHitPlayerEvent.isCancelled()) {
-                    e.setCancelled(true);
+                /* NPC is not a player O_o */
+                if (e.getEntity().hasMetadata("NPC")){
+                    ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target);
+                    Bukkit.getServer().getPluginManager().callEvent(projectileHitEntityEvent);
+                    if (projectileHitEntityEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
+                }
+                else {
+                    ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
+                    Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
+                    if (projectileHitPlayerEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
                 }
             }
         }

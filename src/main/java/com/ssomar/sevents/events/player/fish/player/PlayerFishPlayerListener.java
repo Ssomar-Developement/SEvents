@@ -1,6 +1,7 @@
 package com.ssomar.sevents.events.player.fish.player;
 
 import com.ssomar.sevents.events.player.click.left.PlayerLeftClickEvent;
+import com.ssomar.sevents.events.player.fish.entity.PlayerFishEntityEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -20,10 +21,19 @@ public class PlayerFishPlayerListener  implements Listener {
         if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)) {
             Entity ent = e.getCaught();
             if(ent instanceof Player) {
-                PlayerFishPlayerEvent playerFishPlayerEvent = new PlayerFishPlayerEvent((Player) e.getPlayer(), (Player)ent);
-                Bukkit.getServer().getPluginManager().callEvent(playerFishPlayerEvent);
-                if (playerFishPlayerEvent.isCancelled()) {
-                    e.setCancelled(true);
+                /* NPC is not a player O_o */
+                if (ent.hasMetadata("NPC")){
+                    PlayerFishEntityEvent playerFishEntityEvent = new PlayerFishEntityEvent((Player) e.getPlayer(), ent);
+                    Bukkit.getServer().getPluginManager().callEvent(playerFishEntityEvent);
+                    if (playerFishEntityEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
+                }else {
+                    PlayerFishPlayerEvent playerFishPlayerEvent = new PlayerFishPlayerEvent((Player) e.getPlayer(), (Player) ent);
+                    Bukkit.getServer().getPluginManager().callEvent(playerFishPlayerEvent);
+                    if (playerFishPlayerEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
                 }
             }
         }

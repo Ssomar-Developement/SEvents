@@ -1,6 +1,7 @@
 package com.ssomar.sevents.events.player.receivehit.byplayer;
 
 import com.ssomar.sevents.events.player.fish.player.PlayerFishPlayerEvent;
+import com.ssomar.sevents.events.player.receivehit.byentity.PlayerReceiveHitByEntityEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -27,10 +28,19 @@ public class PlayerReceiveHitByPlayerListener implements Listener {
             }
 
             if (e.getEntity() instanceof Player) {
-                PlayerReceiveHitByPlayerEvent playerReceiveHitByPlayerEvent = new PlayerReceiveHitByPlayerEvent((Player) e.getEntity(), (Player) e.getDamager(), e.getCause());
-                Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitByPlayerEvent);
-                if (playerReceiveHitByPlayerEvent.isCancelled()) {
-                    e.setCancelled(true);
+                /* NPC is not a player O_o */
+                if (e.getEntity().hasMetadata("NPC")){
+                    PlayerReceiveHitByEntityEvent playerReceiveHitByPlayerEvent = new PlayerReceiveHitByEntityEvent((Player) e.getEntity(), e.getDamager(), e.getCause());
+                    Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitByPlayerEvent);
+                    if (playerReceiveHitByPlayerEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
+                }else {
+                    PlayerReceiveHitByPlayerEvent playerReceiveHitByPlayerEvent = new PlayerReceiveHitByPlayerEvent((Player) e.getEntity(), (Player) e.getDamager(), e.getCause());
+                    Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitByPlayerEvent);
+                    if (playerReceiveHitByPlayerEvent.isCancelled()) {
+                        e.setCancelled(true);
+                    }
                 }
             }
         }

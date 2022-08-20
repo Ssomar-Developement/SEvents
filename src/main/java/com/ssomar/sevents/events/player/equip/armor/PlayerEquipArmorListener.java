@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.equip.armor;
 
+import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Container;
@@ -156,7 +157,7 @@ public class PlayerEquipArmorListener implements Listener {
             if (!e.useInteractedBlock().equals(Result.DENY)) {
                 if (e.getClickedBlock() != null && e.getAction() == Action.RIGHT_CLICK_BLOCK && !player.isSneaking()) {// Having both of these checks is useless, might as well do it though.
                     // Some blocks have actions when you right click them which stops the client from equipping the armor in hand.
-                    if ((e.getClickedBlock().getState() != null) && e.getClickedBlock().getState() instanceof Container) {
+                    if ((e.getClickedBlock().getState() != null) && !Version.is1v11Less() && e.getClickedBlock().getState() instanceof Container) {
                         return;
                     }
                     Material mat = e.getClickedBlock().getType();

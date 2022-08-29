@@ -35,24 +35,24 @@ public class PlayerLeftClickListener implements Listener {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
 
-        //System.out.println("TOO MANY INTERACT CHECK");
+        System.out.println("TOO MANY INTERACT CHECK");
         if(TooManyInteractionManager.getInstance().containsKey(pUUID)){
 
             int amount = TooManyInteractionManager.getInstance().get(pUUID);
-            //System.out.println("TOO MANY INTERACT Contains: "+amount);
+            System.out.println("TOO MANY INTERACT Contains: "+amount);
             if(amount > 0) {
                 if(amount == 1) TooManyInteractionManager.getInstance().remove(pUUID);
                 else TooManyInteractionManager.getInstance().put(pUUID, amount - 1);
-                //System.out.println("TOO MANY interact cancel");
+                System.out.println("TOO MANY interact cancel");
                 return;
             }
         }
 
         // Cancel if its necessary
-        //System.out.println("LEFT CLICK INFO: "+e.getAction()+" :: "+e.getHand()+" :: "+e.getMaterial()+" :: "+e.useItemInHand());
-        //System.out.println("PREDETECT CANCEL INTERACT");
+        System.out.println("LEFT CLICK INFO: "+e.getAction()+" :: "+e.getHand()+" :: "+e.getMaterial()+" :: "+e.useItemInHand());
+        System.out.println("PREDETECT CANCEL INTERACT");
         if (cancelInteraction.contains(pUUID)) {
-            //System.out.println("DETECT CANCEL INTERACT");
+            System.out.println("DETECT CANCEL INTERACT");
             cancelInteraction.removeAll(Collections.singleton(pUUID));
             e.setCancelled(true);
             return;
@@ -61,6 +61,7 @@ public class PlayerLeftClickListener implements Listener {
         Action action = e.getAction();
         if (action.equals(Action.PHYSICAL)) return;
 
+        System.out.println("RUNNNN");
         if (action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK)) {
             PlayerLeftClickEvent playerLeftClickEvent = new PlayerLeftClickEvent((Player) e.getPlayer(), e.getClickedBlock(), e.getBlockFace());
             Bukkit.getServer().getPluginManager().callEvent(playerLeftClickEvent);

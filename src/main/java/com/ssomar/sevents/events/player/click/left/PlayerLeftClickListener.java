@@ -67,6 +67,8 @@ public class PlayerLeftClickListener implements Listener {
             Bukkit.getServer().getPluginManager().callEvent(playerLeftClickEvent);
             if (playerLeftClickEvent.isCancelled()) {
                 e.setCancelled(true);
+                e.setUseItemInHand(org.bukkit.event.Event.Result.DENY);
+                e.setUseInteractedBlock(org.bukkit.event.Event.Result.DENY);
             }
         }
     }

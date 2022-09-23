@@ -77,6 +77,8 @@ public class PlayerRightClickListener implements Listener {
             Bukkit.getServer().getPluginManager().callEvent(playerRightClickEvent);
             if (playerRightClickEvent.isCancelled()) {
                 e.setCancelled(true);
+                e.setUseItemInHand(org.bukkit.event.Event.Result.DENY);
+                e.setUseInteractedBlock(org.bukkit.event.Event.Result.DENY);
             }
         }
 

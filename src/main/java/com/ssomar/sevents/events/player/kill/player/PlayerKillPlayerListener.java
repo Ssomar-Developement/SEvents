@@ -14,8 +14,7 @@ public class PlayerKillPlayerListener implements Listener {
         if (p.getKiller() != null) {
             PlayerKillPlayerEvent playerKillPlayerEvent = new PlayerKillPlayerEvent(p.getKiller(), p, e.getDroppedExp(), e.getDrops());
             Bukkit.getServer().getPluginManager().callEvent(playerKillPlayerEvent);
-            e.getDrops().clear();
-            e.getDrops().addAll(playerKillPlayerEvent.getDrops());
+            e.setDroppedExp(playerKillPlayerEvent.getDroppedExp());
         }
     }
 }

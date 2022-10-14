@@ -18,8 +18,6 @@ public class PlayerKillEntityListener implements Listener {
             PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getEntity(), e.getDroppedExp(), e.getDrops());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
             e.setDroppedExp(playerKillEntityEvent.getDroppedExp());
-            e.getDrops().clear();
-            e.getDrops().addAll(playerKillEntityEvent.getDrops());
         }
     }
 }

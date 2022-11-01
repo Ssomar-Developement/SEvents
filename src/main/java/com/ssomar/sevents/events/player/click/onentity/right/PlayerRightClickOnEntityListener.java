@@ -29,6 +29,16 @@ public class PlayerRightClickOnEntityListener implements Listener {
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();
 
+        /* when its an object that is interactable with then entity ex: dye on sheep or tamed wolf
+        * In main hand -> event MAIN HAND only
+        * In off hand -> event MAIN HAND + OFF HAND
+        * in main hand and off hand -> event MAIN HAND + OFF HAND
+        * When its not
+        * In main hand -> MAIN HAND + OFF HAND
+        * In off hand -> MAIN HAND + OFF HAND
+        * In main hand and off hand -> MAIN HAND + OFF HAND
+        * */
+
         if(!Version.is1v11Less() && e.getHand().equals(EquipmentSlot.OFF_HAND)) {
             if(CancelOffHandInteractionManager.getInstance().containsKey(pUUID)) {
                 CancelOffHandInteractionManager.getInstance().remove(pUUID);
@@ -42,7 +52,23 @@ public class PlayerRightClickOnEntityListener implements Listener {
             Bukkit.getServer().getPluginManager().callEvent(playerRightClickOnEntityEvent);
             if (playerRightClickOnEntityEvent.isCancelled()) {
                 e.setCancelled(true);
-                CancelOffHandInteractionManager.getInstance().put(pUUID, 1);
+
+                if(!Version.is1v11Less()) {
+                    ItemStack mainHandItem = p.getInventory().getItemInMainHand();
+                    if (mainHandItem != null) {
+                        if (mainHandItem.getType().toString().toUpperCase().contains("DYE")) {
+                            Entity entity = e.getRightClicked();
+                            if (entity instanceof Sheep) {
+                                Sheep sheep = (Sheep) entity;
+                                if (sheep.isSheared()) return;
+                            } else if (entity instanceof Wolf) {
+                                Wolf wolf = (Wolf) entity;
+                                if (!wolf.isTamed()) return;
+                            }
+                        }
+                    }
+                    CancelOffHandInteractionManager.getInstance().put(pUUID, 1);
+                }
             }
             /* Gold on Piglin generates a LEFT_CLICK event */
             if(Version.is1v16Plus() && e.getRightClicked().getType().equals(EntityType.PIGLIN)){

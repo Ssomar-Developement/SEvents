@@ -21,6 +21,7 @@ public class PlayerLeftClickOnEntityListener implements Listener {
             Player damager = (Player)e.getDamager();
             if (damager.hasMetadata("cancelDamageEvent"))
                 return;
+
             if (!(e.getEntity() instanceof Player)) {
                 PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());
                 Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);

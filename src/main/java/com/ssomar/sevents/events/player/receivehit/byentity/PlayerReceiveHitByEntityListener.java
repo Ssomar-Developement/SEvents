@@ -11,6 +11,7 @@ public class PlayerReceiveHitByEntityListener implements Listener {
     @EventHandler
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
         if (!(e.getDamager() instanceof Player)) {
+
             if (e.getEntity() instanceof Player) {
                 PlayerReceiveHitByEntityEvent playerReceiveHitByPlayerEvent = new PlayerReceiveHitByEntityEvent((Player) e.getEntity(), e.getDamager(), e.getCause());
                 Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitByPlayerEvent);

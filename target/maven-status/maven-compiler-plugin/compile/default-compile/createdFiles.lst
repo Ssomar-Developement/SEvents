@@ -36,6 +36,7 @@ com\ssomar\sevents\events\player\sprint\desactive\SPlayerDesactiveSprintEvent.cl
 com\ssomar\sevents\events\player\fish\block\PlayerFishBlockEvent.class
 com\ssomar\sevents\events\player\tramplecrop\PlayerTrampleCropEvent.class
 com\ssomar\sevents\events\player\equip\armor\SPlayerEquipArmorEvent.class
+com\ssomar\sevents\events\player\click\CancelOffHandInteractionManager.class
 com\ssomar\sevents\events\player\receivehit\global\PlayerReceiveHitGlobalListener.class
 com\ssomar\sevents\events\player\click\right\SPlayerRightClickEvent.class
 com\ssomar\sevents\events\player\click\onplayer\right\PlayerRightClickOnPlayerListener.class

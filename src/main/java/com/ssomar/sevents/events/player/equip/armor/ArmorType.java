@@ -29,6 +29,7 @@ public enum ArmorType{
 		else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return CHESTPLATE;
 		else if(type.endsWith("_LEGGINGS")) return LEGGINGS;
 		else if(type.endsWith("_BOOTS")) return BOOTS;
+		else if(type.contains("CARVED_PUMPKIN")) return HELMET;
 		else return null;
 	}
 

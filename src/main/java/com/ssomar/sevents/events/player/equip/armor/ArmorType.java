@@ -24,7 +24,7 @@ public enum ArmorType{
 	public static ArmorType matchType(final ItemStack itemStack, boolean noHead){
 		if(PlayerEquipArmorListener.isAirOrNull(itemStack)) return null;
 		String type = itemStack.getType().name();
-		System.out.println("type: "+type);
+		//System.out.println("type: "+type);
 		if(!noHead && (type.endsWith("_SKULL") || type.endsWith("_HEAD"))) return HELMET;
 		else if(type.endsWith("_HELMET")) return HELMET;
 		else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return CHESTPLATE;

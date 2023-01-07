@@ -24,12 +24,13 @@ public enum ArmorType{
 	public static ArmorType matchType(final ItemStack itemStack, boolean noHead){
 		if(PlayerEquipArmorListener.isAirOrNull(itemStack)) return null;
 		String type = itemStack.getType().name();
+		System.out.println("type: "+type);
 		if(!noHead && (type.endsWith("_SKULL") || type.endsWith("_HEAD"))) return HELMET;
 		else if(type.endsWith("_HELMET")) return HELMET;
 		else if(type.endsWith("_CHESTPLATE") || type.equals("ELYTRA")) return CHESTPLATE;
 		else if(type.endsWith("_LEGGINGS")) return LEGGINGS;
 		else if(type.endsWith("_BOOTS")) return BOOTS;
-		else if(type.contains("CARVED_PUMPKIN")) return HELMET;
+		else if(type.equals("CARVED_PUMPKIN")) return HELMET;
 		else return null;
 	}
 

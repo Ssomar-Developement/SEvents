@@ -26,14 +26,14 @@ public class ProjectileHitPlayerListener implements Listener {
                 if (e.getEntity().hasMetadata("NPC")){
                     ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target);
                     Bukkit.getServer().getPluginManager().callEvent(projectileHitEntityEvent);
-                    if (projectileHitEntityEvent.isCancelled()) {
+                    if (projectileHitEntityEvent.isCancelled() && !Version.is1v11Less()) {
                         e.setCancelled(true);
                     }
                 }
                 else {
                     ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
                     Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
-                    if (projectileHitPlayerEvent.isCancelled()) {
+                    if (projectileHitPlayerEvent.isCancelled() && !Version.is1v11Less()) {
                         e.setCancelled(true);
                     }
                 }
@@ -47,7 +47,7 @@ public class ProjectileHitPlayerListener implements Listener {
                         target = entity;
                         ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
                         Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
-                        if (projectileHitPlayerEvent.isCancelled()) {
+                        if (projectileHitPlayerEvent.isCancelled() && !Version.is1v11Less()) {
                             e.setCancelled(true);
                         }
                         return;

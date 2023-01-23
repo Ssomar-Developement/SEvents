@@ -26,7 +26,7 @@ public class ProjectileHitBlockListener implements Listener {
                 Block b = e.getHitBlock();
                 ProjectileHitBlockEvent projectileHitBlockEvent = new ProjectileHitBlockEvent(projectile, b, blockFace);
                 Bukkit.getServer().getPluginManager().callEvent(projectileHitBlockEvent);
-                if (projectileHitBlockEvent.isCancelled()) {
+                if (projectileHitBlockEvent.isCancelled() && !Version.is1v11Less()) {
                     e.setCancelled(true);
                 }
             }
@@ -36,7 +36,7 @@ public class ProjectileHitBlockListener implements Listener {
                 Block b = projectile.getLocation().subtract(0,0.2,0).getBlock();
                 ProjectileHitBlockEvent projectileHitBlockEvent = new ProjectileHitBlockEvent(projectile, b, blockFace);
                 Bukkit.getServer().getPluginManager().callEvent(projectileHitBlockEvent);
-                if (projectileHitBlockEvent.isCancelled()) {
+                if (projectileHitBlockEvent.isCancelled() && !Version.is1v11Less()) {
                     e.setCancelled(true);
                 }
             }

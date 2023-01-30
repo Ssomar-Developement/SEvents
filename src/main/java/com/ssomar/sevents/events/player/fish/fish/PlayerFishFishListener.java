@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerFishEvent;
 
 public class PlayerFishFishListener implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGH,ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerFishEvent(PlayerFishEvent e) {
 
         if (e.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {

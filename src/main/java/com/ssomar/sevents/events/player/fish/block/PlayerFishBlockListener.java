@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerFishEvent;
 
 public class PlayerFishBlockListener implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGH,ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerFishEvent(PlayerFishEvent e) {
         if (e.getState().equals(PlayerFishEvent.State.IN_GROUND) && !Version.is1v12Less()) {
             Location loc = e.getHook().getLocation();

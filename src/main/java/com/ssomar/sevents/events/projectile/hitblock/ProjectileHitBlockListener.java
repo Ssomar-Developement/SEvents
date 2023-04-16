@@ -25,9 +25,9 @@ public class ProjectileHitBlockListener implements Listener {
             if (e.getHitBlock() != null) {
                 Block b = e.getHitBlock();
                 ProjectileHitBlockEvent projectileHitBlockEvent = new ProjectileHitBlockEvent(projectile, b, blockFace);
-                projectileHitBlockEvent.setCancelled(e.isCancelled());
+                if(!Version.is1v12Less()) projectileHitBlockEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(projectileHitBlockEvent);
-                if (projectileHitBlockEvent.isCancelled() && !Version.is1v11Less()) {
+                if (projectileHitBlockEvent.isCancelled() && !Version.is1v12Less()) {
                     e.setCancelled(true);
                 }
             }
@@ -36,9 +36,9 @@ public class ProjectileHitBlockListener implements Listener {
             if(projectile.isOnGround()){
                 Block b = projectile.getLocation().subtract(0,0.2,0).getBlock();
                 ProjectileHitBlockEvent projectileHitBlockEvent = new ProjectileHitBlockEvent(projectile, b, blockFace);
-                projectileHitBlockEvent.setCancelled(e.isCancelled());
+                if(!Version.is1v12Less()) projectileHitBlockEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(projectileHitBlockEvent);
-                if (projectileHitBlockEvent.isCancelled() && !Version.is1v11Less()) {
+                if (projectileHitBlockEvent.isCancelled() && !Version.is1v12Less()) {
                     e.setCancelled(true);
                 }
             }

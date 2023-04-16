@@ -1,6 +1,8 @@
 package com.ssomar.sevents;
 
 public enum EventName {
+
+    BLOCK_DRY("BlockDryEvent"),
     PLAYER_LEFT_CLICK_EVENT("PlayerLeftClickEvent"),
     PLAYER_RIGHT_CLICK_EVENT("PlayerRightClickEvent"),
     PLAYER_BEFORE_DEATH_EVENT("PlayerBeforeDeathEvent"),

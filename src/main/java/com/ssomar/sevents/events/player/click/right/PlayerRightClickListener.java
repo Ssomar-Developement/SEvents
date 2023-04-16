@@ -58,7 +58,7 @@ public class PlayerRightClickListener implements Listener {
         if(!Version.is1v11Less()) {
             EquipmentSlot equipSlot = e.getHand();
             if (equipSlot == null || (equipSlot.equals(EquipmentSlot.OFF_HAND))) {
-                /* important pour que le right clik en off hand soit compté*/
+                /* important pour que le right clik en off hand soit compté */
                 if (!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR"))) {
 
                     /* Temporary fix, cancel usage of spawn eggs in the offhand

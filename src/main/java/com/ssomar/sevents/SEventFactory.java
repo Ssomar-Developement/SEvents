@@ -1,5 +1,6 @@
 package com.ssomar.sevents;
 
+import com.ssomar.sevents.events.block.SBlockDryEvent;
 import com.ssomar.sevents.events.player.beforedeath.SPlayerBeforeDeathEvent;
 import com.ssomar.sevents.events.player.click.left.SPlayerLeftClickEvent;
 import com.ssomar.sevents.events.player.click.onentity.left.SPlayerLeftClickOnEntityEvent;
@@ -33,8 +34,11 @@ import com.ssomar.sevents.events.projectile.hitplayer.SProjectileHitPlayerEvent;
 
 public class SEventFactory {
 
-    public SEvent getSEvent(EventName eventName){
-        switch (eventName){
+    public SEvent getSEvent(EventName eventName) {
+        switch (eventName) {
+            case BLOCK_DRY:
+                return new SBlockDryEvent();
+
             case PLAYER_RIGHT_CLICK_EVENT:
                 return new SPlayerRightClickEvent();
             case PLAYER_RIGHT_CLICK_ON_ENTITY_EVENT:

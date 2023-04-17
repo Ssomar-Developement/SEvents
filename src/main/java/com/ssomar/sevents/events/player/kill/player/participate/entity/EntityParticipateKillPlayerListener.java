@@ -30,6 +30,7 @@ public class EntityParticipateKillPlayerListener implements Listener {
                 Bukkit.getServer().getPluginManager().callEvent(playerKillPlayerEvent);
             }
         }
+        participations.remove(p.getUniqueId());
     }
 
     @EventHandler

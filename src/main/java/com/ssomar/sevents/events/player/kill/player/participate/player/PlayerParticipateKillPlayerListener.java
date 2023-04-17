@@ -27,6 +27,7 @@ public class PlayerParticipateKillPlayerListener implements Listener {
                 Bukkit.getServer().getPluginManager().callEvent(playerKillPlayerEvent);
             }
         }
+        participations.remove(p.getUniqueId());
     }
 
     @EventHandler

@@ -18,7 +18,11 @@ import com.ssomar.sevents.events.player.fly.active.SPlayerActiveFlyEvent;
 import com.ssomar.sevents.events.player.fly.desactive.SPlayerDesactiveFlyEvent;
 import com.ssomar.sevents.events.player.jump.SPlayerJumpEvent;
 import com.ssomar.sevents.events.player.kill.entity.SPlayerKillEntityEvent;
+import com.ssomar.sevents.events.player.kill.entity.participate.entity.SEntityParticipateKillEntityEvent;
+import com.ssomar.sevents.events.player.kill.entity.participate.player.SPlayerParticipateKillEntityEvent;
 import com.ssomar.sevents.events.player.kill.player.SPlayerKillPlayerEvent;
+import com.ssomar.sevents.events.player.kill.player.participate.entity.SEntityParticipateKillPlayerEvent;
+import com.ssomar.sevents.events.player.kill.player.participate.player.SPlayerParticipateKillPlayerEvent;
 import com.ssomar.sevents.events.player.press.SPlayerPressPlateEvent;
 import com.ssomar.sevents.events.player.receivehit.byentity.SPlayerReceiveHitByEntityEvent;
 import com.ssomar.sevents.events.player.receivehit.byplayer.SPlayerReceiveHitByPlayerEvent;
@@ -38,6 +42,11 @@ public class SEventFactory {
         switch (eventName) {
             case BLOCK_DRY:
                 return new SBlockDryEvent();
+
+            case ENTITY_PARTICIPATE_KILL_ENTITY_EVENT:
+                return new SEntityParticipateKillEntityEvent();
+            case ENTITY_PARTICIPATE_KILL_PLAYER_EVENT:
+                return new SEntityParticipateKillPlayerEvent();
 
             case PLAYER_RIGHT_CLICK_EVENT:
                 return new SPlayerRightClickEvent();
@@ -86,6 +95,11 @@ public class SEventFactory {
                 return new SPlayerKillPlayerEvent();
             case PLAYER_KILL_ENTITY_EVENT:
                 return new SPlayerKillEntityEvent();
+
+            case PLAYER_PARTICIPATE_KILL_ENTITY_EVENT:
+                return new SPlayerParticipateKillEntityEvent();
+            case PLAYER_PARTICIPATE_KILL_PLAYER_EVENT:
+                return new SPlayerParticipateKillPlayerEvent();
 
             case PLAYER_RECEIVE_HIT_BY_PLAYER_EVENT:
                 return new SPlayerReceiveHitByPlayerEvent();

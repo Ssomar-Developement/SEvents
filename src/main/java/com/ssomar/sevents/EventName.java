@@ -3,6 +3,8 @@ package com.ssomar.sevents;
 public enum EventName {
 
     BLOCK_DRY("BlockDryEvent"),
+    ENTITY_PARTICIPATE_KILL_ENTITY_EVENT("EntityParticipateKillEntityEvent"),
+    ENTITY_PARTICIPATE_KILL_PLAYER_EVENT("EntityParticipateKillPlayerEvent"),
     PLAYER_LEFT_CLICK_EVENT("PlayerLeftClickEvent"),
     PLAYER_RIGHT_CLICK_EVENT("PlayerRightClickEvent"),
     PLAYER_BEFORE_DEATH_EVENT("PlayerBeforeDeathEvent"),
@@ -18,6 +20,8 @@ public enum EventName {
     PLAYER_RECEIVE_HIT_GLOBAL_EVENT("PlayerReceiveHitGlobalEvent"),
     PLAYER_KILL_ENTITY_EVENT("PlayerKillEntityEvent"),
     PLAYER_KILL_PLAYER_EVENT("PlayerKillPlayerEvent"),
+    PLAYER_PARTICIPATE_KILL_ENTITY_EVENT("PlayerParticipateKillEntityEvent"),
+    PLAYER_PARTICIPATE_KILL_PLAYER_EVENT("PlayerParticipateKillPlayerEvent"),
     PLAYER_FISH_BLOCK_EVENT("PlayerFishBlockEvent"),
     PLAYER_FISH_FISH_EVENT("PlayerFishFishEvent"),
     PLAYER_FISH_ENTITY_EVENT("PlayerFishEntityEvent"),

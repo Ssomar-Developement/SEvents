@@ -186,6 +186,28 @@ public class PlayerEquipArmorListener implements Listener {
                         e.setCancelled(true);
                         player.updateInventory();
                     }
+                } else if (Version.is1v19v4Plus()){
+                    ItemStack currentArmorPiece = null;
+                    if(newArmorType.equals(ArmorType.HELMET) && !isAirOrNull(e.getPlayer().getInventory().getHelmet())) {
+                        currentArmorPiece = e.getPlayer().getInventory().getHelmet();
+                    }
+                    else if(newArmorType.equals(ArmorType.CHESTPLATE) && !isAirOrNull(e.getPlayer().getInventory().getChestplate())){
+                        currentArmorPiece = e.getPlayer().getInventory().getChestplate();
+                    }
+                    else if(newArmorType.equals(ArmorType.LEGGINGS) && !isAirOrNull(e.getPlayer().getInventory().getLeggings())){
+                        currentArmorPiece = e.getPlayer().getInventory().getLeggings();
+                    }
+                    else if(newArmorType.equals(ArmorType.BOOTS) && !isAirOrNull(e.getPlayer().getInventory().getBoots())){
+                        currentArmorPiece = e.getPlayer().getInventory().getBoots();
+                    }
+                    if (currentArmorPiece != null) {
+                        PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(e.getItem(), true), currentArmorPiece, e.getItem());
+                        Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
+                        if (armorEquipEvent.isCancelled()) {
+                            e.setCancelled(true);
+                            player.updateInventory();
+                        }
+                    }
                 }
             }
         }

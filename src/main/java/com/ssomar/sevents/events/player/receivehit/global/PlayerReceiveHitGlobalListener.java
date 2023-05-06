@@ -14,6 +14,9 @@ public class PlayerReceiveHitGlobalListener implements Listener {
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent e) {
 
+        //ignore fake events / required to ignore retard event from MythicLib io/lumine/mythic/lib/listener/SkillTriggers.java
+        if(e.getDamage() == 0) return;
+
         if(!(e.getEntity() instanceof Player)) return;
 
         PlayerReceiveHitGlobalEvent playerReceiveHitGlobalEvent = new PlayerReceiveHitGlobalEvent((Player) e.getEntity(), e.getCause());

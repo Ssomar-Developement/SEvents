@@ -10,6 +10,10 @@ public class PlayerReceiveHitByEntityListener implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
+
+        //ignore fake events / required to ignore retard event from MythicLib io/lumine/mythic/lib/listener/SkillTriggers.java
+        if(e.getDamage() == 0) return;
+
         if (!(e.getDamager() instanceof Player)) {
 
             if (e.getEntity() instanceof Player) {

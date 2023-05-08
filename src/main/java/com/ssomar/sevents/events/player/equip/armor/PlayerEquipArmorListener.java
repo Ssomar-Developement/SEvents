@@ -53,10 +53,11 @@ public class PlayerEquipArmorListener implements Listener {
     	blockedMaterials.add("BELL");
     	blockedMaterials.add("SMITHING_TABLE");
     }
-    //Event Priority is highest because other plugins might cancel the events before we check.
+    //Event Priority is highest because other plugins might cancel the events before we check. (EX : LOCKED IN INVENTORY EI)
 
     /* THIS EVENT MUST BE LOW, because idk why CMI cancel it for no reason */
-    @EventHandler(priority = EventPriority.LOW)
+    /* seems fixed 05/23 */
+    @EventHandler(priority = EventPriority.HIGH)
     public final void inventoryClick(final InventoryClickEvent e) {
         boolean shift = false, numberkey = false;
         if (e.isCancelled()) {
@@ -144,7 +145,7 @@ public class PlayerEquipArmorListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void playerInteractEvent(PlayerInteractEvent e) {
         if (e.useItemInHand().equals(Result.DENY)) {
             return;

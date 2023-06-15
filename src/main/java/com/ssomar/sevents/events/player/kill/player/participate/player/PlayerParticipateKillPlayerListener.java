@@ -23,7 +23,9 @@ public class PlayerParticipateKillPlayerListener implements Listener {
         if (participations.containsKey(p.getUniqueId())) {
             List<UUID> list = participations.get(p.getUniqueId());
             for (UUID uuid : list) {
-                PlayerParticipateKillPlayerEvent playerKillPlayerEvent = new PlayerParticipateKillPlayerEvent(Bukkit.getPlayer(uuid), p);
+                Player target = Bukkit.getPlayer(uuid);
+                if (target == null) continue;
+                PlayerParticipateKillPlayerEvent playerKillPlayerEvent = new PlayerParticipateKillPlayerEvent(target, p);
                 Bukkit.getServer().getPluginManager().callEvent(playerKillPlayerEvent);
             }
         }

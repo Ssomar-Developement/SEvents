@@ -2,6 +2,7 @@ package com.ssomar.sevents;
 
 import com.ssomar.sevents.events.block.SBlockDryEvent;
 import com.ssomar.sevents.events.player.beforedeath.SPlayerBeforeDeathEvent;
+import com.ssomar.sevents.events.player.brush.SPlayerBrushBlockEvent;
 import com.ssomar.sevents.events.player.click.left.SPlayerLeftClickEvent;
 import com.ssomar.sevents.events.player.click.onentity.left.SPlayerLeftClickOnEntityEvent;
 import com.ssomar.sevents.events.player.click.onentity.right.SPlayerRightClickOnEntityEvent;
@@ -47,6 +48,8 @@ public class SEventFactory {
                 return new SEntityParticipateKillEntityEvent();
             case ENTITY_PARTICIPATE_KILL_PLAYER_EVENT:
                 return new SEntityParticipateKillPlayerEvent();
+            case PLAYER_BRUSH_BLOCK_EVENT:
+                return new SPlayerBrushBlockEvent();
 
             case PLAYER_RIGHT_CLICK_EVENT:
                 return new SPlayerRightClickEvent();

@@ -11,6 +11,7 @@ public enum EventName {
     /*PLAYER_DEATH_EVENT,
     PLAYER_DROP_ITEM_EVENT,
     PLAYER_DROP_THE_EI_EVENT,*/
+    PLAYER_BRUSH_BLOCK_EVENT("PlayerBrushBlockEvent"),
     PLAYER_LEFT_CLICK_ON_PLAYER_EVENT("PlayerLeftClickOnPlayerEvent"),
     PLAYER_LEFT_CLICK_ON_ENTITY_EVENT("PlayerLeftClickOnEntityEvent"),
     PLAYER_RIGHT_CLICK_ON_PLAYER_EVENT("PlayerRightClickOnPlayerEvent"),

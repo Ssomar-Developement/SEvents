@@ -55,7 +55,7 @@ public class PlayerKillEntityListener implements Listener {
     @EventHandler
     public void onHangingBreakByEntityEvent(HangingBreakByEntityEvent e) {
 
-        if (e.getEntity() instanceof Player && !(e.getRemover() instanceof Player)) return;
+        if (e.getEntity() instanceof Player || !(e.getRemover() instanceof Player)) return;
 
         Player p;
         if ((p = (Player) e.getRemover()) == null) return;

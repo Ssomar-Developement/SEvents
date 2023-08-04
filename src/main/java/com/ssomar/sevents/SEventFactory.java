@@ -1,8 +1,8 @@
 package com.ssomar.sevents;
 
 import com.ssomar.sevents.events.block.SBlockDryEvent;
-import com.ssomar.sevents.events.player.beforedeath.entity.SEntityBeforeDeathEvent;
-import com.ssomar.sevents.events.player.beforedeath.player.SPlayerBeforeDeathEvent;
+import com.ssomar.sevents.events.entity.beforedeath.SEntityBeforeDeathEvent;
+import com.ssomar.sevents.events.player.beforedeath.SPlayerBeforeDeathEvent;
 import com.ssomar.sevents.events.player.brush.SPlayerBrushBlockEvent;
 import com.ssomar.sevents.events.player.click.left.SPlayerLeftClickEvent;
 import com.ssomar.sevents.events.player.click.onentity.left.SPlayerLeftClickOnEntityEvent;

@@ -1,22 +1,21 @@
-package com.ssomar.sevents.events.player.beforedeath.player;
+package com.ssomar.sevents.events.entity.beforedeath;
 
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.entity.EntityEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class PlayerBeforeDeathEvent extends PlayerEvent implements Cancellable {
+public class EntityBeforeDeathEvent extends EntityEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
 
     /**
-     * @param player The player who put on / removed the armor.
+     * @param entity The entity who put on / removed the armor.
      */
-    public PlayerBeforeDeathEvent(final Player player){
-        super(player);
+    public EntityBeforeDeathEvent(final Entity entity){
+        super(entity);
     }
 
     /**

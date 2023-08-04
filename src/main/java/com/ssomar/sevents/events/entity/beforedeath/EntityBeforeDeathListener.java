@@ -1,7 +1,6 @@
-package com.ssomar.sevents.events.player.beforedeath.entity;
+package com.ssomar.sevents.events.entity.beforedeath;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

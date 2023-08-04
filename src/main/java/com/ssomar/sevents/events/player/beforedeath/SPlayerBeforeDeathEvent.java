@@ -1,4 +1,4 @@
-package com.ssomar.sevents.events.player.beforedeath.player;
+package com.ssomar.sevents.events.player.beforedeath;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;

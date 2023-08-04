@@ -1,4 +1,4 @@
-package com.ssomar.sevents.events.player.beforedeath;
+package com.ssomar.sevents.events.player.beforedeath.player;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

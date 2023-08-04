@@ -7,6 +7,7 @@ public enum EventName {
     ENTITY_PARTICIPATE_KILL_PLAYER_EVENT("EntityParticipateKillPlayerEvent"),
     PLAYER_LEFT_CLICK_EVENT("PlayerLeftClickEvent"),
     PLAYER_RIGHT_CLICK_EVENT("PlayerRightClickEvent"),
+    ENTITY_BEFORE_DEATH_EVENT("EntityBeforeDeathEvent"),
     PLAYER_BEFORE_DEATH_EVENT("PlayerBeforeDeathEvent"),
     /*PLAYER_DEATH_EVENT,
     PLAYER_DROP_ITEM_EVENT,

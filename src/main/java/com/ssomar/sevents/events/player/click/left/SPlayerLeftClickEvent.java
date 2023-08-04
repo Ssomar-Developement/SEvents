@@ -2,7 +2,6 @@ package com.ssomar.sevents.events.player.click.left;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;
-import com.ssomar.sevents.events.player.beforedeath.PlayerBeforeDeathListener;
 import org.bukkit.event.Listener;
 
 import java.util.ArrayList;

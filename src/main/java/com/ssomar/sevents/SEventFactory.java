@@ -1,7 +1,8 @@
 package com.ssomar.sevents;
 
 import com.ssomar.sevents.events.block.SBlockDryEvent;
-import com.ssomar.sevents.events.player.beforedeath.SPlayerBeforeDeathEvent;
+import com.ssomar.sevents.events.player.beforedeath.entity.SEntityBeforeDeathEvent;
+import com.ssomar.sevents.events.player.beforedeath.player.SPlayerBeforeDeathEvent;
 import com.ssomar.sevents.events.player.brush.SPlayerBrushBlockEvent;
 import com.ssomar.sevents.events.player.click.left.SPlayerLeftClickEvent;
 import com.ssomar.sevents.events.player.click.onentity.left.SPlayerLeftClickOnEntityEvent;
@@ -110,6 +111,9 @@ public class SEventFactory {
                 return new SPlayerReceiveHitByEntityEvent();
             case PLAYER_RECEIVE_HIT_GLOBAL_EVENT:
                 return new SPlayerReceiveHitGlobalEvent();
+
+            case ENTITY_BEFORE_DEATH_EVENT:
+                return new SEntityBeforeDeathEvent();
 
             case PLAYER_BEFORE_DEATH_EVENT:
                 return new SPlayerBeforeDeathEvent();

@@ -11,18 +11,18 @@ public class EntityBeforeDeathListener implements Listener {
 
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent e) {
-        System.out.println("EntityBeforeDeathListener.onEntityDamageEvent");
+        //System.out.println("EntityBeforeDeathListener.onEntityDamageEvent");
 
         if((e.getEntity() instanceof Player) || !(e.getEntity() instanceof LivingEntity)) return;
 
-        System.out.println("EntityBeforeDeathListener.onEntityDamageEvent: e.getEntity() instanceof LivingEntity");
+        //System.out.println("EntityBeforeDeathListener.onEntityDamageEvent: e.getEntity() instanceof LivingEntity");
 
         LivingEntity entity = (LivingEntity) e.getEntity();
 
         if (entity.getHealth() <= e.getFinalDamage()) {
             EntityBeforeDeathEvent entityBeforeDeathEvent = new EntityBeforeDeathEvent(entity);
             Bukkit.getServer().getPluginManager().callEvent(entityBeforeDeathEvent);
-            System.out.println("EntityBeforeDeathListener.onEntityDamageEvent: entityBeforeDeathEvent.isCancelled() = " + entityBeforeDeathEvent.isCancelled());
+            //System.out.println("EntityBeforeDeathListener.onEntityDamageEvent: entityBeforeDeathEvent.isCancelled() = " + entityBeforeDeathEvent.isCancelled());
             if (entityBeforeDeathEvent.isCancelled()) {
                 e.setCancelled(true);
             };

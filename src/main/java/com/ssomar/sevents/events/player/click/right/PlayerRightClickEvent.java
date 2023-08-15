@@ -4,6 +4,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
@@ -18,15 +19,18 @@ public class PlayerRightClickEvent extends PlayerEvent implements Cancellable {
     private final BlockFace blockFace;
     private final Boolean sourceCancelled;
 
+    private Event sourceEvent;
+
     /**
      * @param player The player who put on / removed the armor.
      * @param block The block clicked, can be null
      */
-    public PlayerRightClickEvent(final Player player, final @Nullable  Block block, @NotNull BlockFace blockFace, @NotNull Boolean sourceCancelled) {
+    public PlayerRightClickEvent(final Player player, final @Nullable  Block block, @NotNull BlockFace blockFace, @NotNull Boolean sourceCancelled, @NotNull Event sourceEvent) {
         super(player);
         this.block = block;
         this.blockFace = blockFace;
         this.sourceCancelled = sourceCancelled;
+        this.sourceEvent = sourceEvent;
     }
 
     @Nullable
@@ -74,5 +78,9 @@ public class PlayerRightClickEvent extends PlayerEvent implements Cancellable {
     @Override
     public final @NotNull HandlerList getHandlers() {
         return handlers;
+    }
+
+    public Event getSourceEvent() {
+        	return sourceEvent;
     }
 }

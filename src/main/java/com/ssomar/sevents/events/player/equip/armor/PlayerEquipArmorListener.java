@@ -1,19 +1,18 @@
 package com.ssomar.sevents.events.player.equip.armor;
 
+import com.ssomar.sevents.events.player.click.right.PlayerRightClickEvent;
 import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.block.Container;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockDispenseArmorEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
-import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -31,27 +30,27 @@ public class PlayerEquipArmorListener implements Listener {
     private final List<String> blockedMaterials;
 
     public PlayerEquipArmorListener() {
-    	blockedMaterials = new ArrayList<>();
-    	blockedMaterials.add("BEACON");
-    	blockedMaterials.add("CRAFTING_TABLE");
-    	blockedMaterials.add("ENCHANTMENT_TABLE");
-    	blockedMaterials.add("ENDER_CHEST");
-    	blockedMaterials.add("DIODE_BLOCK_OFF");
-    	blockedMaterials.add("DIODE_BLOCK_ON");
-    	blockedMaterials.add("REDSTONE_COMPARATOR_OFF");
-    	blockedMaterials.add("REDSTONE_COMPARATOR_ON");
-    	blockedMaterials.add("LEVER");
-    	blockedMaterials.add("DAYLIGHT_DETECTOR_INVERTED");
-    	blockedMaterials.add("DAYLIGHT_DETECTOR");
-    	blockedMaterials.add("CARTOGRAPHY_TABLE");
-    	blockedMaterials.add("ANVIL");
-    	blockedMaterials.add("CHIPPED_ANVIL");
-    	blockedMaterials.add("DAMAGED_ANVIL");
-    	blockedMaterials.add("GRINDSTONE");
-    	blockedMaterials.add("LOOM");
-    	blockedMaterials.add("STONECUTTER");
-    	blockedMaterials.add("BELL");
-    	blockedMaterials.add("SMITHING_TABLE");
+        blockedMaterials = new ArrayList<>();
+        blockedMaterials.add("BEACON");
+        blockedMaterials.add("CRAFTING_TABLE");
+        blockedMaterials.add("ENCHANTMENT_TABLE");
+        blockedMaterials.add("ENDER_CHEST");
+        blockedMaterials.add("DIODE_BLOCK_OFF");
+        blockedMaterials.add("DIODE_BLOCK_ON");
+        blockedMaterials.add("REDSTONE_COMPARATOR_OFF");
+        blockedMaterials.add("REDSTONE_COMPARATOR_ON");
+        blockedMaterials.add("LEVER");
+        blockedMaterials.add("DAYLIGHT_DETECTOR_INVERTED");
+        blockedMaterials.add("DAYLIGHT_DETECTOR");
+        blockedMaterials.add("CARTOGRAPHY_TABLE");
+        blockedMaterials.add("ANVIL");
+        blockedMaterials.add("CHIPPED_ANVIL");
+        blockedMaterials.add("DAMAGED_ANVIL");
+        blockedMaterials.add("GRINDSTONE");
+        blockedMaterials.add("LOOM");
+        blockedMaterials.add("STONECUTTER");
+        blockedMaterials.add("BELL");
+        blockedMaterials.add("SMITHING_TABLE");
     }
     //Event Priority is highest because other plugins might cancel the events before we check. (EX : LOCKED IN INVENTORY EI)
 
@@ -145,69 +144,61 @@ public class PlayerEquipArmorListener implements Listener {
         }
     }
 
+    /* REQUIRE TO REGISTRY PLAYER RIGHT CLICK EVENT */
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void playerInteractEvent(PlayerInteractEvent e) {
-        if (e.useItemInHand().equals(Result.DENY)) {
-            return;
-        }
-        if (e.getAction() == Action.PHYSICAL) {
-            return;
-        }
-        if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            Player player = e.getPlayer();
-            if (!e.useInteractedBlock().equals(Result.DENY)) {
-                if (e.getClickedBlock() != null && e.getAction() == Action.RIGHT_CLICK_BLOCK && !player.isSneaking()) {// Having both of these checks is useless, might as well do it though.
-                    // Some blocks have actions when you right click them which stops the client from equipping the armor in hand.
-                    if ((e.getClickedBlock().getState() != null) && !Version.is1v11Less() && e.getClickedBlock().getState() instanceof Container) {
-                        return;
-                    }
-                    Material mat = e.getClickedBlock().getType();
-                    if (mat.toString().contains("SIGN")
-                            || mat.toString().contains("TRAPDOOR")
-                            || mat.toString().contains("DOOR")
-                            || mat.toString().contains("BUTTON")
-                            || mat.toString().contains("FENCE_GATE")
-                            || mat.toString().contains("BED")
-                            || mat.toString().contains("FLOWER_POT")) {
-                        return;
-                    }
-                    for (String s : blockedMaterials) {
-                        if (mat.name().equalsIgnoreCase(s)) {
-                            return;
-                        }
-                    }
+    public void playerRightClickEvent(PlayerRightClickEvent e) {
+        Player player = e.getPlayer();
+        if (e.hasBlock()) {
+            Block block = e.getBlock();
+            // Some blocks have actions when you right click them which stops the client from equipping the armor in hand.
+            if ((block.getState() != null) && !Version.is1v11Less() && block.getState() instanceof Container) {
+                return;
+            }
+            Material mat = block.getType();
+            if (mat.toString().contains("SIGN")
+                    || mat.toString().contains("TRAPDOOR")
+                    || mat.toString().contains("DOOR")
+                    || mat.toString().contains("BUTTON")
+                    || mat.toString().contains("FENCE_GATE")
+                    || mat.toString().contains("BED")
+                    || mat.toString().contains("FLOWER_POT")) {
+                return;
+            }
+            for (String s : blockedMaterials) {
+                if (mat.name().equalsIgnoreCase(s)) {
+                    return;
                 }
             }
-            ArmorType newArmorType = ArmorType.matchType(e.getItem(), true);
-            if (newArmorType != null) {
-                if (newArmorType.equals(ArmorType.HELMET) && isAirOrNull(e.getPlayer().getInventory().getHelmet()) || newArmorType.equals(ArmorType.CHESTPLATE) && isAirOrNull(e.getPlayer().getInventory().getChestplate()) || newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()) || newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots())) {
-                    PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(e.getItem(), true), null, e.getItem());
+        }
+
+        ItemStack item = ((PlayerInteractEvent) e.getSourceEvent()).getItem();
+
+        ArmorType newArmorType = ArmorType.matchType(item, true);
+        if (newArmorType != null) {
+            if (newArmorType.equals(ArmorType.HELMET) && isAirOrNull(e.getPlayer().getInventory().getHelmet()) || newArmorType.equals(ArmorType.CHESTPLATE) && isAirOrNull(e.getPlayer().getInventory().getChestplate()) || newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()) || newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots())) {
+                PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), null, item);
+                Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
+                if (armorEquipEvent.isCancelled()) {
+                    e.setCancelled(true);
+                    player.updateInventory();
+                }
+            } else if (Version.is1v19v4Plus()) {
+                ItemStack currentArmorPiece = null;
+                if (newArmorType.equals(ArmorType.HELMET) && !isAirOrNull(e.getPlayer().getInventory().getHelmet())) {
+                    currentArmorPiece = e.getPlayer().getInventory().getHelmet();
+                } else if (newArmorType.equals(ArmorType.CHESTPLATE) && !isAirOrNull(e.getPlayer().getInventory().getChestplate())) {
+                    currentArmorPiece = e.getPlayer().getInventory().getChestplate();
+                } else if (newArmorType.equals(ArmorType.LEGGINGS) && !isAirOrNull(e.getPlayer().getInventory().getLeggings())) {
+                    currentArmorPiece = e.getPlayer().getInventory().getLeggings();
+                } else if (newArmorType.equals(ArmorType.BOOTS) && !isAirOrNull(e.getPlayer().getInventory().getBoots())) {
+                    currentArmorPiece = e.getPlayer().getInventory().getBoots();
+                }
+                if (currentArmorPiece != null) {
+                    PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), currentArmorPiece, item);
                     Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                     if (armorEquipEvent.isCancelled()) {
                         e.setCancelled(true);
                         player.updateInventory();
-                    }
-                } else if (Version.is1v19v4Plus()){
-                    ItemStack currentArmorPiece = null;
-                    if(newArmorType.equals(ArmorType.HELMET) && !isAirOrNull(e.getPlayer().getInventory().getHelmet())) {
-                        currentArmorPiece = e.getPlayer().getInventory().getHelmet();
-                    }
-                    else if(newArmorType.equals(ArmorType.CHESTPLATE) && !isAirOrNull(e.getPlayer().getInventory().getChestplate())){
-                        currentArmorPiece = e.getPlayer().getInventory().getChestplate();
-                    }
-                    else if(newArmorType.equals(ArmorType.LEGGINGS) && !isAirOrNull(e.getPlayer().getInventory().getLeggings())){
-                        currentArmorPiece = e.getPlayer().getInventory().getLeggings();
-                    }
-                    else if(newArmorType.equals(ArmorType.BOOTS) && !isAirOrNull(e.getPlayer().getInventory().getBoots())){
-                        currentArmorPiece = e.getPlayer().getInventory().getBoots();
-                    }
-                    if (currentArmorPiece != null) {
-                        PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(e.getItem(), true), currentArmorPiece, e.getItem());
-                        Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
-                        if (armorEquipEvent.isCancelled()) {
-                            e.setCancelled(true);
-                            player.updateInventory();
-                        }
                     }
                 }
             }
@@ -235,7 +226,7 @@ public class PlayerEquipArmorListener implements Listener {
     }
 
     @SuppressWarnings("deprecation")
-	@EventHandler
+    @EventHandler
     public void itemBreakEvent(PlayerItemBreakEvent e) {
         ArmorType type = ArmorType.matchType(e.getBrokenItem(), false);
         if (type != null) {

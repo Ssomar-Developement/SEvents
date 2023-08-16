@@ -1,5 +1,6 @@
 package com.ssomar.sevents.events.player.click.right;
 
+import com.ssomar.sevents.events.player.click.CancelOffHandInteractionManager;
 import com.ssomar.sevents.events.player.click.TooManyInteractionManager;
 import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
@@ -16,6 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class PlayerRightClickListener implements Listener {
 
@@ -51,6 +53,7 @@ public class PlayerRightClickListener implements Listener {
     public void playerInteractEvent(PlayerInteractEvent e) {
 
         Player p = e.getPlayer();
+        UUID pUUID = p.getUniqueId();
 
         Action action = e.getAction();
         if(action.equals(Action.PHYSICAL)) return;
@@ -58,6 +61,12 @@ public class PlayerRightClickListener implements Listener {
         if(!Version.is1v11Less()) {
             EquipmentSlot equipSlot = e.getHand();
             if (equipSlot == null || (equipSlot.equals(EquipmentSlot.OFF_HAND))) {
+
+                if (CancelOffHandInteractionManager.getInstance().containsKey(pUUID)) {
+                    CancelOffHandInteractionManager.getInstance().remove(pUUID);
+                    e.setCancelled(true);
+                }
+
                 /* important pour que le right clik en off hand soit compté */
                 if (!(p.getInventory().getItemInMainHand().getType().equals(Material.AIR) && action.toString().contains("AIR"))) {
 
@@ -79,6 +88,7 @@ public class PlayerRightClickListener implements Listener {
                 e.setCancelled(true);
                 e.setUseItemInHand(org.bukkit.event.Event.Result.DENY);
                 e.setUseInteractedBlock(org.bukkit.event.Event.Result.DENY);
+                CancelOffHandInteractionManager.getInstance().put(pUUID, 1);
             }
         }
 

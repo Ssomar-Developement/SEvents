@@ -63,6 +63,7 @@ public class PlayerKillEntityListener implements Listener {
         if (p != null) {
             PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getEntity(), 0, new ArrayList<>());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
+            if(playerKillEntityEvent.isCancelled()) e.setCancelled(true);
         }
     }
 
@@ -77,6 +78,7 @@ public class PlayerKillEntityListener implements Listener {
         if (p != null) {
             PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getVehicle(), 0, new ArrayList<>());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
+            if(playerKillEntityEvent.isCancelled()) e.setCancelled(true);
         }
     }
 

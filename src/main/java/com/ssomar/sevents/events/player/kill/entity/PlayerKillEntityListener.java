@@ -39,10 +39,7 @@ public class PlayerKillEntityListener implements Listener {
                 playerKilledArmorStand.remove(e.getEntity().getUniqueId());
             } else return;
         } else if ((p = entity.getKiller()) == null) {
-            // CUSTOM DAMAGE COMMANDS DONT HAVE KILLER , to get killer check if the last damage cause is an entity attack + if the entity is a player
-            EntityDamageEvent entityDamageEvent = entity.getLastDamageCause();
-            if(entityDamageEvent == null || entityDamageEvent.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK || !(entityDamageEvent.getEntity() instanceof Player)) return;
-            p = (Player) entityDamageEvent.getEntity();
+            return;
         }
 
         if (p != null) {

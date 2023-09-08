@@ -2,10 +2,12 @@ package com.ssomar.sevents.events.player.kill.entity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.vehicle.VehicleDestroyEvent;
@@ -25,7 +27,9 @@ public class PlayerKillEntityListener implements Listener {
     @EventHandler
     public void onEntityDeathEvent(EntityDeathEvent e) {
 
-        if (e.getEntity() instanceof Player) return;
+        LivingEntity entity = e.getEntity();
+
+        if (entity instanceof Player) return;
 
         Player p;
 
@@ -34,10 +38,15 @@ public class PlayerKillEntityListener implements Listener {
                 p = Bukkit.getPlayer(playerKilledArmorStand.get(e.getEntity().getUniqueId()));
                 playerKilledArmorStand.remove(e.getEntity().getUniqueId());
             } else return;
-        } else if ((p = e.getEntity().getKiller()) == null) return;
+        } else if ((p = entity.getKiller()) == null) {
+            // CUSTOM DAMAGE COMMANDS DONT HAVE KILLER , to get killer check if the last damage cause is an entity attack + if the entity is a player
+            EntityDamageEvent entityDamageEvent = entity.getLastDamageCause();
+            if(entityDamageEvent == null || entityDamageEvent.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK || !(entityDamageEvent.getEntity() instanceof Player)) return;
+            p = (Player) entityDamageEvent.getEntity();
+        }
 
         if (p != null) {
-            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getEntity(), e.getDroppedExp(), e.getDrops());
+            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, entity, e.getDroppedExp(), e.getDrops());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
             e.setDroppedExp(playerKillEntityEvent.getDroppedExp());
         }

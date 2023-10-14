@@ -16,8 +16,10 @@ import com.ssomar.sevents.events.player.fish.entity.SPlayerFishEntityEvent;
 import com.ssomar.sevents.events.player.fish.fish.SPlayerFishFishEvent;
 import com.ssomar.sevents.events.player.fish.nothing.SPlayerFishNothingEvent;
 import com.ssomar.sevents.events.player.fish.player.SPlayerFishPlayerEvent;
-import com.ssomar.sevents.events.player.fly.active.SPlayerActiveFlyEvent;
-import com.ssomar.sevents.events.player.fly.desactive.SPlayerDesactiveFlyEvent;
+import com.ssomar.sevents.events.player.fly.enable.SPlayerEnableFlyEvent;
+import com.ssomar.sevents.events.player.fly.disable.SPlayerDisableFlyEvent;
+import com.ssomar.sevents.events.player.glide.enable.SPlayerEnableGlideEvent;
+import com.ssomar.sevents.events.player.glide.disable.SPlayerDisableGlideEvent;
 import com.ssomar.sevents.events.player.jump.SPlayerJumpEvent;
 import com.ssomar.sevents.events.player.kill.entity.SPlayerKillEntityEvent;
 import com.ssomar.sevents.events.player.kill.entity.participate.entity.SEntityParticipateKillEntityEvent;
@@ -29,10 +31,10 @@ import com.ssomar.sevents.events.player.press.SPlayerPressPlateEvent;
 import com.ssomar.sevents.events.player.receivehit.byentity.SPlayerReceiveHitByEntityEvent;
 import com.ssomar.sevents.events.player.receivehit.byplayer.SPlayerReceiveHitByPlayerEvent;
 import com.ssomar.sevents.events.player.receivehit.global.SPlayerReceiveHitGlobalEvent;
-import com.ssomar.sevents.events.player.sneak.active.SPlayerActiveSneakEvent;
-import com.ssomar.sevents.events.player.sneak.desactive.SPlayerDesactiveSneakEvent;
-import com.ssomar.sevents.events.player.sprint.active.SPlayerActiveSprintEvent;
-import com.ssomar.sevents.events.player.sprint.desactive.SPlayerDesactiveSprintEvent;
+import com.ssomar.sevents.events.player.sneak.enable.SPlayerEnableSneakEvent;
+import com.ssomar.sevents.events.player.sneak.disable.SPlayerDisableSneakEvent;
+import com.ssomar.sevents.events.player.sprint.enable.SPlayerEnableSprintEvent;
+import com.ssomar.sevents.events.player.sprint.disable.SPlayerDisableSprintEvent;
 import com.ssomar.sevents.events.player.tramplecrop.SPlayerTrampleCropEvent;
 import com.ssomar.sevents.events.projectile.hitblock.SProjectileHitBlockEvent;
 import com.ssomar.sevents.events.projectile.hitentity.SProjectileHitEntityEvent;
@@ -77,20 +79,25 @@ public class SEventFactory {
             case PLAYER_FISH_NOTHING_EVENT:
                 return new SPlayerFishNothingEvent();
 
-            case PLAYER_ACTIVE_SNEAK_EVENT:
-                return new SPlayerActiveSneakEvent();
-            case PLAYER_DESACTIVE_SNEAK_EVENT:
-                return new SPlayerDesactiveSneakEvent();
+            case PLAYER_ENABLE_SNEAK_EVENT:
+                return new SPlayerEnableSneakEvent();
+            case PLAYER_DISABLE_SNEAK_EVENT:
+                return new SPlayerDisableSneakEvent();
 
-            case PLAYER_ACTIVE_SPRINT_EVENT:
-                return new SPlayerActiveSprintEvent();
-            case PLAYER_DESACTIVE_SPRINT_EVENT:
-                return new SPlayerDesactiveSprintEvent();
+            case PLAYER_ENABLE_SPRINT_EVENT:
+                return new SPlayerEnableSprintEvent();
+            case PLAYER_DISABLE_SPRINT_EVENT:
+                return new SPlayerDisableSprintEvent();
 
-            case PLAYER_ACTIVE_FLY_EVENT:
-                return new SPlayerActiveFlyEvent();
-            case PLAYER_DESACTIVE_FLY_EVENT:
-                return new SPlayerDesactiveFlyEvent();
+            case PLAYER_ENABLE_FLY_EVENT:
+                return new SPlayerEnableFlyEvent();
+            case PLAYER_DISABLE_FLY_EVENT:
+                return new SPlayerDisableFlyEvent();
+
+            case PLAYER_ENABLE_GLIDE_EVENT:
+                return new SPlayerEnableGlideEvent();
+            case PLAYER_DISABLE_GLIDE_EVENT:
+                return new SPlayerDisableGlideEvent();
 
             case PLAYER_JUMP_EVENT:
                 return new SPlayerJumpEvent();

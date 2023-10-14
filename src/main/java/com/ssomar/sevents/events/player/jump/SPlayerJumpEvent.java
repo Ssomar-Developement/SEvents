@@ -2,7 +2,6 @@ package com.ssomar.sevents.events.player.jump;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;
-import com.ssomar.sevents.events.player.fly.desactive.PlayerDesactiveFlyListener;
 import org.bukkit.event.Listener;
 
 import java.util.ArrayList;

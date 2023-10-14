@@ -15,10 +15,7 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorListenerAbove112.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\enable\PlayerEnableFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\tramplecrop\SPlayerTrampleCropEvent.java
-C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\fly\active\SPlayerActiveFlyEvent.java
-C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\fly\active\PlayerActiveFlyListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\projectile\hitblock\ProjectileHitBlockListener.java
-C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\fly\active\PlayerActiveFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\projectile\hitblock\SProjectileHitBlockEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\tramplecrop\PlayerTrampleCropListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\kill\entity\PlayerKillEntityListener.java
@@ -102,13 +99,11 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\registr
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\entity\beforedeath\EntityBeforeDeathListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\player\PlayerFishPlayerListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\equip\armor\ArmorType.java
-C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\fly\desactive\SPlayerDesactiveFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\block\PlayerFishBlockListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\kill\entity\participate\entity\EntityParticipateKillEntityListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\PlayerDisableFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\right\SPlayerRightClickEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\nothing\PlayerFishBlobListener.java
-C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\fly\desactive\PlayerDesactiveFlyListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\beforedeath\PlayerBeforeDeathListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\SEventFactory.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\glide\disable\PlayerDisableGlideListener.java
@@ -121,7 +116,6 @@ C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\kill\player\SPlayerKillPlayerEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\glide\enable\SPlayerEnableGlideEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\left\SPlayerLeftClickOnEntityEvent.java
-C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fly\disable\fly\desactive\PlayerDesactiveFlyEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\fish\entity\PlayerFishEntityEvent.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\projectile\hitplayer\ProjectileHitPlayerListener.java
 C:\Users\octav\Documents\GitHub\SEvents\src\main\java\com\ssomar\sevents\events\player\click\onentity\left\PlayerLeftClickOnEntityListener.java

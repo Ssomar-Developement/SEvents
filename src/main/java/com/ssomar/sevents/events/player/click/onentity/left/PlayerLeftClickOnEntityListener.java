@@ -35,7 +35,7 @@ public class PlayerLeftClickOnEntityListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e) {
 
-        if (e.getCause().equals(EntityDamageEvent.DamageCause.THORNS) || (e.getDamage() == 0 && entity0Damage.contains(e.getEntity().getType()))) return;
+        if (e.getCause().equals(EntityDamageEvent.DamageCause.THORNS) || (e.getDamage() == 0 && !entity0Damage.contains(e.getEntity().getType()))) return;
 
         if (e.getDamager() instanceof Player) {
             Player damager = (Player) e.getDamager();

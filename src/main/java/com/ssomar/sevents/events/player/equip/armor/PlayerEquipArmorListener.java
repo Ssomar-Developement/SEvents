@@ -175,7 +175,12 @@ public class PlayerEquipArmorListener implements Listener {
 
         ArmorType newArmorType = ArmorType.matchType(item, true);
         if (newArmorType != null) {
-            if (newArmorType.equals(ArmorType.HELMET) && isAirOrNull(e.getPlayer().getInventory().getHelmet()) || newArmorType.equals(ArmorType.CHESTPLATE) && isAirOrNull(e.getPlayer().getInventory().getChestplate()) || newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()) || newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots())) {
+            if (ArmorType.canReplaceUsingHotBar(item) &&
+                    ((newArmorType.equals(ArmorType.HELMET) && isAirOrNull(e.getPlayer().getInventory().getHelmet()))
+                    || (newArmorType.equals(ArmorType.CHESTPLATE) && isAirOrNull(e.getPlayer().getInventory().getChestplate()))
+                    || (newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()))
+                    || (newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots()))))
+            {
                 PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), null, item);
                 Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                 if (armorEquipEvent.isCancelled()) {
@@ -193,7 +198,7 @@ public class PlayerEquipArmorListener implements Listener {
                 } else if (newArmorType.equals(ArmorType.BOOTS) && !isAirOrNull(e.getPlayer().getInventory().getBoots())) {
                     currentArmorPiece = e.getPlayer().getInventory().getBoots();
                 }
-                if (currentArmorPiece != null) {
+                if (currentArmorPiece != null && ArmorType.canReplaceUsingHotBar(item)) {
                     PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), currentArmorPiece, item);
                     Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                     if (armorEquipEvent.isCancelled()) {

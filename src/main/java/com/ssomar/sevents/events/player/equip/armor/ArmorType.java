@@ -34,6 +34,13 @@ public enum ArmorType{
 		else return null;
 	}
 
+	public static boolean canReplaceUsingHotBar(final ItemStack itemStack){
+		if(PlayerEquipArmorListener.isAirOrNull(itemStack)) return false;
+		String type = itemStack.getType().name();
+		if(type.equals("CARVED_PUMPKIN")) return false;
+		return true;
+	}
+
 	public int getSlot(){
 		return slot;
 	}

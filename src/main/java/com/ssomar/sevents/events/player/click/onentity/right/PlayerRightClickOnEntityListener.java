@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -17,8 +18,9 @@ import java.util.UUID;
 
 public class PlayerRightClickOnEntityListener implements Listener {
 
+    /* PlayerInteractEntityEvent -> removed because it isnt generated with right click armor stand */
     @EventHandler
-    public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent e) {
+    public void onPlayerInteractAtEntityEvent(PlayerInteractAtEntityEvent e) {
 
         Player p = e.getPlayer();
         UUID pUUID = p.getUniqueId();

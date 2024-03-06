@@ -2,6 +2,7 @@ package com.ssomar.sevents.events.player.click.onentity.right;
 
 import com.ssomar.sevents.events.player.click.CancelOffHandInteractionManager;
 import com.ssomar.sevents.events.player.click.TooManyInteractionManager;
+import com.ssomar.sevents.events.player.click.TransmitCancelInteractionManager;
 import com.ssomar.sevents.version.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -14,11 +15,12 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.UUID;
+import java.util.*;
 
 public class PlayerRightClickOnEntityListener implements Listener {
-
+    
     /* PlayerInteractEntityEvent -> removed because it isnt generated with right click armor stand */
+    /* PlayerInteractEntityEvent -> BUT IN FACT IT IS NECESSARY BECAUSE PlayerInteractAtEntityEvent doesnt cancel interaction even with canceled true  */
     @EventHandler
     public void onPlayerInteractAtEntityEvent(PlayerInteractAtEntityEvent e) {
 
@@ -39,6 +41,7 @@ public class PlayerRightClickOnEntityListener implements Listener {
             if (CancelOffHandInteractionManager.getInstance().containsKey(pUUID)) {
                 CancelOffHandInteractionManager.getInstance().remove(pUUID);
                 e.setCancelled(true);
+                TransmitCancelInteractionManager.getInstance().put(pUUID, 1);
             }
             return;
         }
@@ -48,6 +51,8 @@ public class PlayerRightClickOnEntityListener implements Listener {
             Bukkit.getServer().getPluginManager().callEvent(playerRightClickOnEntityEvent);
             if (playerRightClickOnEntityEvent.isCancelled()) {
                 e.setCancelled(true);
+
+                TransmitCancelInteractionManager.getInstance().put(pUUID, 1);
 
                 if (!Version.is1v11Less()) {
                     ItemStack mainHandItem = p.getInventory().getItemInMainHand();
@@ -73,6 +78,17 @@ public class PlayerRightClickOnEntityListener implements Listener {
                 boolean hasGoldInHand = ((item = pInv.getItem(pInv.getHeldItemSlot())) != null || (item = pInv.getItem(40)) != null) && item.getType().equals(Material.GOLD_INGOT);
                 if (hasGoldInHand) TooManyInteractionManager.getInstance().put(pUUID, 1);
             }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent e) {
+        Player p = e.getPlayer();
+        UUID pUUID = p.getUniqueId();
+
+        if (TransmitCancelInteractionManager.getInstance().containsKey(pUUID)) {
+            TransmitCancelInteractionManager.getInstance().remove(pUUID);
+            e.setCancelled(true);
         }
     }
 }

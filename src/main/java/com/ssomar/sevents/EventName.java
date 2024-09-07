@@ -39,6 +39,8 @@ public enum EventName {
     PLAYER_DISABLE_SNEAK_EVENT("PlayerDisableSneakEvent"),
     PLAYER_ENABLE_SPRINT_EVENT("PlayerEnableSprintEvent"),
     PLAYER_DISABLE_SPRINT_EVENT("PlayerDisableSprintEvent"),
+    PLAYER_ENABLE_SWIM_EVENT("PlayerEnableSwimEvent"),
+    PLAYER_DISABLE_SWIM_EVENT("PlayerDisableSwimEvent"),
     PLAYER_PRESS_PLATE_EVENT("PlayerPressPlateEvent"),
     PLAYER_TRAMPLE_CROP_EVENT("PlayerTrampleCropEvent"),
     PROJECTILE_HIT_BLOCK("ProjectileHitBlockEvent"),

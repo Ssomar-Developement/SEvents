@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
@@ -17,6 +18,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.plugin.RegisteredListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,9 +61,21 @@ public class PlayerEquipArmorListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public final void inventoryClick(final InventoryClickEvent e) {
         boolean shift = false, numberkey = false;
-        if (e.isCancelled()) {
-            return;
+
+        /* NEED TO IGNORE if only CMI cancel the event
+        HandlerList handlers = PlayerEquipArmorEvent.getHandlerList();
+        RegisteredListener[] listeners = handlers.getRegisteredListeners();
+        boolean checkCancel = false;
+        for (RegisteredListener registeredListener : listeners) {
+            registeredListener.
         }
+
+        if (checkCancel) {
+            return;
+        }*/
+
+        if(e.isCancelled()) return;
+
         if (e.getAction() == InventoryAction.NOTHING) {
             return;// Why does this get called if nothing happens??
         }
@@ -161,6 +175,8 @@ public class PlayerEquipArmorListener implements Listener {
                     || mat.toString().contains("BUTTON")
                     || mat.toString().contains("FENCE_GATE")
                     || mat.toString().contains("BED")
+                    || mat.toString().contains("CANDLE_CAKES")
+                    || mat.toString().contains("BUTTONS")
                     || mat.toString().contains("FLOWER_POT")) {
                 return;
             }
@@ -177,10 +193,9 @@ public class PlayerEquipArmorListener implements Listener {
         if (newArmorType != null) {
             if (ArmorType.canReplaceUsingHotBar(item) &&
                     ((newArmorType.equals(ArmorType.HELMET) && isAirOrNull(e.getPlayer().getInventory().getHelmet()))
-                    || (newArmorType.equals(ArmorType.CHESTPLATE) && isAirOrNull(e.getPlayer().getInventory().getChestplate()))
-                    || (newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()))
-                    || (newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots()))))
-            {
+                            || (newArmorType.equals(ArmorType.CHESTPLATE) && isAirOrNull(e.getPlayer().getInventory().getChestplate()))
+                            || (newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()))
+                            || (newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots())))) {
                 PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), null, item);
                 Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                 if (armorEquipEvent.isCancelled()) {

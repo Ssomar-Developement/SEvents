@@ -41,16 +41,18 @@ public final class PlayerEquipArmorEvent extends PlayerEvent implements Cancella
 	public static HandlerList getHandlerList(){
 		return handlers;
 	}
-	
+
 	/**
 	 * Gets a list of handlers handling this event.
 	 *
 	 * @return A list of handlers handling this event.
 	 */
 	@Override
-	public final @NotNull HandlerList getHandlers(){
+	public final @NotNull HandlerList getHandlers() {
 		return handlers;
 	}
+
+
 	
 	/**
 	 * Sets if this event should be cancelled.
@@ -102,7 +104,7 @@ public final class PlayerEquipArmorEvent extends PlayerEvent implements Cancella
 	public EquipMethod getMethod(){
 		return equipType;
 	}
-	
+
 	public enum EquipMethod{// These have got to be the worst documentations ever.
 		/**
 		 * When you shift click an armor piece to equip or unequip

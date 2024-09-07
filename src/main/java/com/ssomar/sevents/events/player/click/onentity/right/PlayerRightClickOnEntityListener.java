@@ -18,7 +18,7 @@ import org.bukkit.inventory.PlayerInventory;
 import java.util.*;
 
 public class PlayerRightClickOnEntityListener implements Listener {
-    
+
     /* PlayerInteractEntityEvent -> removed because it isnt generated with right click armor stand */
     /* PlayerInteractEntityEvent -> BUT IN FACT IT IS NECESSARY BECAUSE PlayerInteractAtEntityEvent doesnt cancel interaction even with canceled true  */
     @EventHandler

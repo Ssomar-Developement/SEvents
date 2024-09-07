@@ -126,4 +126,5 @@ com\ssomar\sevents\registration\Registration.class
 com\ssomar\sevents\events\entity\beforedeath\SEntityBeforeDeathEvent.class
 com\ssomar\sevents\events\player\click\left\SPlayerLeftClickEvent.class
 com\ssomar\sevents\version\Version.class
+com\ssomar\sevents\events\player\click\TransmitCancelInteractionManager.class
 com\ssomar\sevents\events\projectile\hitblock\ProjectileHitBlockListener.class

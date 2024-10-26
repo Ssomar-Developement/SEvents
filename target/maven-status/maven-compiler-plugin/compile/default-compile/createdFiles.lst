@@ -7,6 +7,7 @@ com\ssomar\sevents\events\player\click\left\PlayerLeftClickListener.class
 com\ssomar\sevents\events\player\kill\entity\PlayerKillEntityEvent.class
 com\ssomar\sevents\events\player\click\onentity\left\PlayerLeftClickOnEntityEvent.class
 com\ssomar\sevents\events\player\glide\disable\PlayerDisableGlideListener.class
+com\ssomar\sevents\events\player\swim\enable\PlayerEnableSwimListener.class
 com\ssomar\sevents\events\player\click\onplayer\left\PlayerLeftClickOnPlayerEvent.class
 com\ssomar\sevents\events\player\click\onplayer\right\PlayerRightClickOnPlayerEvent.class
 com\ssomar\sevents\events\player\sprint\disable\PlayerDisableSprintEvent.class
@@ -25,6 +26,7 @@ com\ssomar\sevents\events\player\kill\player\participate\entity\SEntityParticipa
 com\ssomar\sevents\events\player\receivehit\byplayer\PlayerReceiveHitByPlayerEvent.class
 com\ssomar\sevents\events\projectile\hitentity\ProjectileHitEntityListener.class
 com\ssomar\sevents\events\player\kill\entity\participate\player\PlayerParticipateKillEntityListener.class
+com\ssomar\sevents\events\player\swim\disable\PlayerDisableSwimEvent.class
 com\ssomar\sevents\events\projectile\hitentity\ProjectileHitEntityEvent.class
 com\ssomar\sevents\events\player\click\right\PlayerRightClickListener.class
 com\ssomar\sevents\events\player\jump\SPlayerJumpEvent.class
@@ -75,6 +77,7 @@ com\ssomar\sevents\events\player\fly\enable\PlayerEnableFlyEvent.class
 com\ssomar\sevents\events\player\fish\nothing\PlayerFishBlobListener.class
 com\ssomar\sevents\events\player\jump\PlayerJumpListener.class
 com\ssomar\sevents\events\block\SBlockDryEvent.class
+com\ssomar\sevents\events\player\swim\disable\SPlayerDisableSwimEvent.class
 com\ssomar\sevents\events\player\kill\entity\participate\entity\SEntityParticipateKillEntityEvent.class
 com\ssomar\sevents\events\player\kill\player\SPlayerKillPlayerEvent.class
 com\ssomar\sevents\events\player\press\PlayerPressPlateEvent.class
@@ -82,6 +85,7 @@ com\ssomar\sevents\events\player\brush\PlayerBrushBlockListener.class
 com\ssomar\sevents\events\player\click\TooManyInteractionManager.class
 com\ssomar\sevents\events\block\BlockDryListener.class
 com\ssomar\sevents\events\player\press\PlayerPressPlateListener.class
+com\ssomar\sevents\events\player\swim\disable\PlayerDisableSwimListener.class
 com\ssomar\sevents\events\player\receivehit\byentity\PlayerReceiveHitByEntityEvent.class
 com\ssomar\sevents\SEventFactory.class
 com\ssomar\sevents\events\player\equip\armor\PlayerEquipArmorEvent$EquipMethod.class
@@ -103,6 +107,7 @@ com\ssomar\sevents\events\player\click\onentity\left\PlayerLeftClickOnEntityList
 com\ssomar\sevents\events\player\sprint\enable\SPlayerEnableSprintEvent.class
 com\ssomar\sevents\events\projectile\hitblock\SProjectileHitBlockEvent.class
 com\ssomar\sevents\events\entity\beforedeath\EntityBeforeDeathEvent.class
+com\ssomar\sevents\events\player\swim\enable\PlayerEnableSwimEvent.class
 com\ssomar\sevents\events\player\receivehit\global\SPlayerReceiveHitGlobalEvent.class
 com\ssomar\sevents\events\player\fish\player\PlayerFishPlayerEvent.class
 com\ssomar\sevents\events\player\click\onentity\right\PlayerRightClickOnEntityListener.class
@@ -125,6 +130,7 @@ com\ssomar\sevents\events\block\BlockDryEvent.class
 com\ssomar\sevents\registration\Registration.class
 com\ssomar\sevents\events\entity\beforedeath\SEntityBeforeDeathEvent.class
 com\ssomar\sevents\events\player\click\left\SPlayerLeftClickEvent.class
+com\ssomar\sevents\events\player\swim\enable\SPlayerEnableSwimEvent.class
 com\ssomar\sevents\version\Version.class
 com\ssomar\sevents\events\player\click\TransmitCancelInteractionManager.class
 com\ssomar\sevents\events\projectile\hitblock\ProjectileHitBlockListener.class

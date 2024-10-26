@@ -2,6 +2,7 @@ package com.ssomar.sevents.events.player.jump;
 
 import com.ssomar.sevents.EventName;
 import com.ssomar.sevents.SEvent;
+import com.ssomar.sevents.version.Version;
 import org.bukkit.event.Listener;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class SPlayerJumpEvent extends SEvent {
 
     @Override
     public List<Listener> getChildListener() {
-        return new ArrayList<>(Arrays.asList(new PlayerJumpListener()));
+        if(Version.is1v21v3Plus()) return new ArrayList<>(Arrays.asList(new PlayerJumpListener1v21v3()));
+        else return new ArrayList<>(Arrays.asList(new PlayerJumpListener()));
     }
 }

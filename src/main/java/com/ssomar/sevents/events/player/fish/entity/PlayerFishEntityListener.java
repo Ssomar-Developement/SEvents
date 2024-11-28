@@ -15,6 +15,7 @@ public class PlayerFishEntityListener implements Listener {
 
         if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)) {
             Entity ent = e.getCaught();
+            if(ent == null) return;
             if(!(ent instanceof Player)) {
                 PlayerFishEntityEvent playerFishEntityEvent = new PlayerFishEntityEvent((Player) e.getPlayer(), ent);
                 Bukkit.getServer().getPluginManager().callEvent(playerFishEntityEvent);

@@ -21,6 +21,9 @@ public class Version {
     private static boolean is1v20 = false;
     private static boolean is1v21 = false;
     private static boolean is1v21v3 = false;
+    private static boolean is1v21v4 = false;
+    private static boolean is1v21v5 = false;
+    private static boolean is1v21v6 = false;
 
     public static void initVersion(){
         is1v8 = Bukkit.getServer().getVersion().contains("1.8");
@@ -40,6 +43,9 @@ public class Version {
         is1v20 = Bukkit.getServer().getVersion().contains("1.20");
         is1v21 = Bukkit.getServer().getVersion().contains("1.21");
         is1v21v3 = Bukkit.getServer().getVersion().contains("1.21.3");
+        is1v21v4 = Bukkit.getServer().getVersion().contains("1.21.4");
+        is1v21v5 = Bukkit.getServer().getVersion().contains("1.21.5");
+        is1v21v6 = Bukkit.getServer().getVersion().contains("1.21.6");
     }
 
 
@@ -128,6 +134,21 @@ public class Version {
         return is1v21v3;
     }
 
+    /* The server is in 1.21.4 ? */
+    public static boolean is1v21v4() {
+        return is1v21v4;
+    }
+
+    /* The server is in 1.21.5 ? */
+    public static boolean is1v21v5() {
+        return is1v21v5;
+    }
+
+    /* The server is in 1.21.6 ? */
+    public static boolean is1v21v6() {
+        return is1v21v6;
+    }
+
     /* The server is in 1.12 or - ? */
     public static boolean is1v11Less() {
         return is1v8() || is1v9() || is1v10() || is1v11() ;
@@ -189,6 +210,6 @@ public class Version {
 
     /* The server is in 1.21.3 or + ? */
     public static boolean is1v21v3Plus() {
-        return (!is1v21() && is1v21Plus()) || is1v21v3();
+        return (!is1v21() && is1v21Plus()) || is1v21v3() || is1v21v4() || is1v21v5() || is1v21v6();
     }
 }

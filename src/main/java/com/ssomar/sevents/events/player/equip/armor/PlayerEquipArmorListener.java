@@ -112,6 +112,7 @@ public class PlayerEquipArmorListener implements Listener {
                         || newArmorType.equals(ArmorType.LEGGINGS) && (equipping == isAirOrNull(inv.getLeggings()))
                         || newArmorType.equals(ArmorType.BOOTS) && (equipping == isAirOrNull(inv.getBoots()))) {
                     PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent((Player) e.getWhoClicked(), PlayerEquipArmorEvent.EquipMethod.SHIFT_CLICK, newArmorType, equipping ? null : e.getCurrentItem(), equipping ? e.getCurrentItem() : null);
+                    armorEquipEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                     if (armorEquipEvent.isCancelled()) {
                         e.setCancelled(true);
@@ -150,6 +151,7 @@ public class PlayerEquipArmorListener implements Listener {
                     method = PlayerEquipArmorEvent.EquipMethod.HOTBAR_SWAP;
                 }
                 PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent((Player) e.getWhoClicked(), method, newArmorType, oldArmorPiece, newArmorPiece);
+                armorEquipEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                 if (armorEquipEvent.isCancelled()) {
                     e.setCancelled(true);
@@ -197,6 +199,7 @@ public class PlayerEquipArmorListener implements Listener {
                             || (newArmorType.equals(ArmorType.LEGGINGS) && isAirOrNull(e.getPlayer().getInventory().getLeggings()))
                             || (newArmorType.equals(ArmorType.BOOTS) && isAirOrNull(e.getPlayer().getInventory().getBoots())))) {
                 PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), null, item);
+                armorEquipEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                 if (armorEquipEvent.isCancelled()) {
                     e.setCancelled(true);
@@ -215,6 +218,7 @@ public class PlayerEquipArmorListener implements Listener {
                 }
                 if (currentArmorPiece != null && ArmorType.canReplaceUsingHotBar(item)) {
                     PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent(e.getPlayer(), PlayerEquipArmorEvent.EquipMethod.HOTBAR, ArmorType.matchType(item, true), currentArmorPiece, item);
+                    armorEquipEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                     if (armorEquipEvent.isCancelled()) {
                         e.setCancelled(true);
@@ -237,6 +241,7 @@ public class PlayerEquipArmorListener implements Listener {
         }
         if (type != null && type.getSlot() == event.getRawSlots().stream().findFirst().orElse(0)) {
             PlayerEquipArmorEvent armorEquipEvent = new PlayerEquipArmorEvent((Player) event.getWhoClicked(), PlayerEquipArmorEvent.EquipMethod.DRAG, type, null, event.getOldCursor());
+            armorEquipEvent.setCancelled(event.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
             if (armorEquipEvent.isCancelled()) {
                 event.setResult(Result.DENY);

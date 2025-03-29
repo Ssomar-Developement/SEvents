@@ -27,6 +27,7 @@ public class PlayerBrushBlockListener implements Listener {
 
 
             PlayerBrushBlockEvent playerBrushBlockEvent = new PlayerBrushBlockEvent(e.getPlayer(), e.getClickedBlock());
+            playerBrushBlockEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerBrushBlockEvent);
             if (playerBrushBlockEvent.isCancelled()) {
                 e.setCancelled(true);

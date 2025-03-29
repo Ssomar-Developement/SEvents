@@ -12,6 +12,7 @@ public class PlayerEnableFlyListener implements Listener {
     public void onPlayerToggleFlightEvent(PlayerToggleFlightEvent e) {
         if(e.isFlying()){
             PlayerEnableFlyEvent playerActiveFlyEvent = new PlayerEnableFlyEvent((Player) e.getPlayer());
+            playerActiveFlyEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerActiveFlyEvent);
             if (playerActiveFlyEvent.isCancelled()) {
                 e.setCancelled(true);

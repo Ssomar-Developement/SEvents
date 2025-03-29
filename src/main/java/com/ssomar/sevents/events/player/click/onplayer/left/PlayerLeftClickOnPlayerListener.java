@@ -27,6 +27,7 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
                 /* NPC is not a player O_o */
                 if (e.getEntity().hasMetadata("NPC")){
                     PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());
+                    playerLeftClickOnEntityEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);
                     if (playerLeftClickOnEntityEvent.isCancelled()) {
                         e.setCancelled(true);
@@ -34,6 +35,7 @@ public class PlayerLeftClickOnPlayerListener implements Listener {
                 }
                 else {
                     PlayerLeftClickOnPlayerEvent playerLeftClickOnPlayerEvent = new PlayerLeftClickOnPlayerEvent(damager, (Player) e.getEntity());
+                    playerLeftClickOnPlayerEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnPlayerEvent);
                     if (playerLeftClickOnPlayerEvent.isCancelled()) {
                         e.setCancelled(true);

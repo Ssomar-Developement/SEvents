@@ -25,12 +25,14 @@ public class PlayerFishPlayerListener  implements Listener {
                 /* NPC is not a player O_o */
                 if (ent.hasMetadata("NPC")){
                     PlayerFishEntityEvent playerFishEntityEvent = new PlayerFishEntityEvent((Player) e.getPlayer(), ent);
+                    playerFishEntityEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(playerFishEntityEvent);
                     if (playerFishEntityEvent.isCancelled()) {
                         e.setCancelled(true);
                     }
                 }else {
                     PlayerFishPlayerEvent playerFishPlayerEvent = new PlayerFishPlayerEvent((Player) e.getPlayer(), (Player) ent);
+                    playerFishPlayerEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(playerFishPlayerEvent);
                     if (playerFishPlayerEvent.isCancelled()) {
                         e.setCancelled(true);

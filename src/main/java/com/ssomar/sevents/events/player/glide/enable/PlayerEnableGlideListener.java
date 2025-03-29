@@ -13,6 +13,7 @@ public class PlayerEnableGlideListener implements Listener {
         if(!(e.getEntity() instanceof Player)) return;
         if(e.isGliding()){
             PlayerEnableGlideEvent playerEnableGlideEvent = new PlayerEnableGlideEvent((Player) e.getEntity());
+            playerEnableGlideEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerEnableGlideEvent);
             if (playerEnableGlideEvent.isCancelled()) {
                 e.setCancelled(true);

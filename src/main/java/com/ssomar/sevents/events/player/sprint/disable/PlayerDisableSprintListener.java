@@ -12,6 +12,7 @@ public class PlayerDisableSprintListener implements Listener {
     public void onPlayerToggleSprintEvent(PlayerToggleSprintEvent e) {
         if (!e.isSprinting()) {
             PlayerDisableSprintEvent playerDesactiveSprintEvent = new PlayerDisableSprintEvent((Player) e.getPlayer());
+            playerDesactiveSprintEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerDesactiveSprintEvent);
             if (playerDesactiveSprintEvent.isCancelled()) {
                 e.setCancelled(true);

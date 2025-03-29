@@ -15,6 +15,7 @@ public class PlayerEnableSwimListener implements Listener {
         Entity entity = e.getEntity();
         if (entity instanceof Player && e.isSwimming()) {
             PlayerEnableSwimEvent playerActiveSprintEvent = new PlayerEnableSwimEvent((Player) entity);
+            playerActiveSprintEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerActiveSprintEvent);
             if (playerActiveSprintEvent.isCancelled()) {
                 e.setCancelled(true);

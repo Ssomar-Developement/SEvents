@@ -19,6 +19,7 @@ public class BlockDryListener implements Listener {
 
         if (newMatStr.contains("CORAL") || newMatStr.contains("FARMLAND")) {
             BlockDryEvent playerTrampleCropsEvent = new BlockDryEvent(block);
+            playerTrampleCropsEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerTrampleCropsEvent);
             if (playerTrampleCropsEvent.isCancelled()) {
                 e.setCancelled(true);

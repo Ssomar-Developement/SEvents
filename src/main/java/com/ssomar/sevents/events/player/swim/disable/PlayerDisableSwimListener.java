@@ -16,6 +16,7 @@ public class PlayerDisableSwimListener implements Listener {
         Entity entity = e.getEntity();
         if (entity instanceof Player && !e.isSwimming()) {
             PlayerDisableSwimEvent playerDesactiveSprintEvent = new PlayerDisableSwimEvent((Player) entity);
+            playerDesactiveSprintEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerDesactiveSprintEvent);
             if (playerDesactiveSprintEvent.isCancelled()) {
                 e.setCancelled(true);

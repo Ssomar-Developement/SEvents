@@ -21,6 +21,7 @@ public class PlayerFishBlockListener implements Listener {
 
             Block b = loc.getBlock();
             PlayerFishBlockEvent playerFishBlockEvent = new PlayerFishBlockEvent((Player) e.getPlayer(), b);
+            playerFishBlockEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerFishBlockEvent);
             if (playerFishBlockEvent.isCancelled()) {
                 e.setCancelled(true);

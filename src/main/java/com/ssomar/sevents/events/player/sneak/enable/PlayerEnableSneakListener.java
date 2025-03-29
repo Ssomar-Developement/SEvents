@@ -12,6 +12,7 @@ public class PlayerEnableSneakListener implements Listener {
     public void onPlayerToggleSneakEvent(PlayerToggleSneakEvent e) {
         if (e.isSneaking()) {
             PlayerEnableSneakEvent playerActiveSneakEvent = new PlayerEnableSneakEvent((Player) e.getPlayer());
+            playerActiveSneakEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerActiveSneakEvent);
             if (playerActiveSneakEvent.isCancelled()) {
                 e.setCancelled(true);

@@ -48,6 +48,7 @@ public class PlayerRightClickOnEntityListener implements Listener {
 
         if (!(e.getRightClicked() instanceof Player)) {
             PlayerRightClickOnEntityEvent playerRightClickOnEntityEvent = new PlayerRightClickOnEntityEvent((Player) e.getPlayer(), e.getRightClicked());
+            playerRightClickOnEntityEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerRightClickOnEntityEvent);
             if (playerRightClickOnEntityEvent.isCancelled()) {
                 e.setCancelled(true);

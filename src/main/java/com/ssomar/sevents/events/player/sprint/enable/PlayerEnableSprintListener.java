@@ -12,6 +12,7 @@ public class PlayerEnableSprintListener implements Listener {
     public void onPlayerToggleSprintEvent(PlayerToggleSprintEvent e) {
         if (e.isSprinting()) {
             PlayerEnableSprintEvent playerActiveSprintEvent = new PlayerEnableSprintEvent((Player) e.getPlayer());
+            playerActiveSprintEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerActiveSprintEvent);
             if (playerActiveSprintEvent.isCancelled()) {
                 e.setCancelled(true);

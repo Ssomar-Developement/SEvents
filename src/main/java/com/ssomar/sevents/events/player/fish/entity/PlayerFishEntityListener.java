@@ -18,6 +18,7 @@ public class PlayerFishEntityListener implements Listener {
             if(ent == null) return;
             if(!(ent instanceof Player)) {
                 PlayerFishEntityEvent playerFishEntityEvent = new PlayerFishEntityEvent((Player) e.getPlayer(), ent);
+                playerFishEntityEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(playerFishEntityEvent);
                 if (playerFishEntityEvent.isCancelled()) {
                     e.setCancelled(true);

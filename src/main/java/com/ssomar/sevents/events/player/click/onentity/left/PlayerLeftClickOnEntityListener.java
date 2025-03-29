@@ -44,6 +44,7 @@ public class PlayerLeftClickOnEntityListener implements Listener {
 
             if (!(e.getEntity() instanceof Player)) {
                 PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getDamager(), e.getEntity());
+                playerLeftClickOnEntityEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);
                 if (playerLeftClickOnEntityEvent.isCancelled()) {
                     e.setCancelled(true);
@@ -61,6 +62,7 @@ public class PlayerLeftClickOnEntityListener implements Listener {
             if (damager.hasMetadata("cancelDamageEvent"))
                 return;
             PlayerLeftClickOnEntityEvent playerLeftClickOnEntityEvent = new PlayerLeftClickOnEntityEvent((Player) e.getRemover(), e.getEntity());
+            playerLeftClickOnEntityEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerLeftClickOnEntityEvent);
             if (playerLeftClickOnEntityEvent.isCancelled()) {
                 e.setCancelled(true);

@@ -17,6 +17,7 @@ public class PlayerFishBlobListener implements Listener {
         /* Not compatible in 1.12 and 1.13 */
         if (!Version.is1v13Less() && e.getState().equals(PlayerFishEvent.State.REEL_IN)) {
             PlayerFishNothingEvent playerFishNothingEvent = new PlayerFishNothingEvent((Player) e.getPlayer(), e.getHook());
+            playerFishNothingEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerFishNothingEvent);
             if (playerFishNothingEvent.isCancelled()) {
                 e.setCancelled(true);

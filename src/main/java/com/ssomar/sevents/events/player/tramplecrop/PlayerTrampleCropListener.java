@@ -26,6 +26,7 @@ public class PlayerTrampleCropListener implements Listener {
             Block b = e.getClickedBlock();
             if(b.getType().equals(Material.FARMLAND)) {
                 PlayerTrampleCropEvent playerTrampleCropsEvent = new PlayerTrampleCropEvent((Player) e.getPlayer(), e.getClickedBlock());
+                playerTrampleCropsEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(playerTrampleCropsEvent);
                 if (playerTrampleCropsEvent.isCancelled()) {
                     e.setCancelled(true);

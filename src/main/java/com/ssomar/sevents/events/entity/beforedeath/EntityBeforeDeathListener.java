@@ -21,6 +21,7 @@ public class EntityBeforeDeathListener implements Listener {
 
         if (entity.getHealth() <= e.getFinalDamage()) {
             EntityBeforeDeathEvent entityBeforeDeathEvent = new EntityBeforeDeathEvent(entity);
+            entityBeforeDeathEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(entityBeforeDeathEvent);
             //System.out.println("EntityBeforeDeathListener.onEntityDamageEvent: entityBeforeDeathEvent.isCancelled() = " + entityBeforeDeathEvent.isCancelled());
             if (entityBeforeDeathEvent.isCancelled()) {

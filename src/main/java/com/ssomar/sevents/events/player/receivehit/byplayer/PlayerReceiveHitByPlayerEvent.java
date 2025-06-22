@@ -13,15 +13,17 @@ public class PlayerReceiveHitByPlayerEvent extends PlayerEvent implements Cancel
     private boolean cancel = false;
     private final Player damager;
     private final EntityDamageEvent.DamageCause damageCause;
+    private final EntityDamageEvent entityDamageEvent;
 
     /**
      * @param player The player who put on / removed the armor.
      * @param damager The block clicked, can be null
      */
-    public PlayerReceiveHitByPlayerEvent(final Player player, final @NotNull Player damager, final @NotNull EntityDamageEvent.DamageCause damageCause){
+    public PlayerReceiveHitByPlayerEvent(final Player player, final @NotNull Player damager, final @NotNull EntityDamageEvent entityDamageEvent){
         super(player);
         this.damager = damager;
-        this.damageCause = damageCause;
+        this.damageCause = entityDamageEvent.getCause();
+        this.entityDamageEvent = entityDamageEvent;
     }
 
     public Player getDamager() {
@@ -31,6 +33,8 @@ public class PlayerReceiveHitByPlayerEvent extends PlayerEvent implements Cancel
     public EntityDamageEvent.DamageCause getDamageCause() {
         return damageCause;
     }
+
+    public EntityDamageEvent getEntityDamageEvent() {return this.entityDamageEvent;}
 
     /**
      * Gets a list of handlers handling this event.

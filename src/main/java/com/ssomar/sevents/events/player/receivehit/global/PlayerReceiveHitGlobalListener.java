@@ -21,7 +21,7 @@ public class PlayerReceiveHitGlobalListener implements Listener {
 
         if (e.getEntity().hasMetadata("NPC")) return;
 
-        PlayerReceiveHitGlobalEvent playerReceiveHitGlobalEvent = new PlayerReceiveHitGlobalEvent((Player) e.getEntity(), e.getCause());
+        PlayerReceiveHitGlobalEvent playerReceiveHitGlobalEvent = new PlayerReceiveHitGlobalEvent((Player) e.getEntity(), e);
         playerReceiveHitGlobalEvent.setCancelled(e.isCancelled());
         Bukkit.getServer().getPluginManager().callEvent(playerReceiveHitGlobalEvent);
         if (playerReceiveHitGlobalEvent.isCancelled()) {

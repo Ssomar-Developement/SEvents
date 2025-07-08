@@ -21,6 +21,7 @@ public class PlayerFishPlayerListener  implements Listener {
 
         if(e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)) {
             Entity ent = e.getCaught();
+            if(ent == null) return;
             if(ent instanceof Player) {
                 /* NPC is not a player O_o */
                 if (ent.hasMetadata("NPC")){

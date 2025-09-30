@@ -50,7 +50,7 @@ public class Version {
         is1v12 = Bukkit.getServer().getVersion().contains("1.12");
         is1v11 = Bukkit.getServer().getVersion().contains("1.11");
         is1v10 = Bukkit.getServer().getVersion().contains("1.10");
-        is1v9 = Bukkit.getServer().getVersion().contains("1.9");
+        is1v9 = Bukkit.getServer().getVersion().contains("1.9") && !is1v21v9;
         is1v8 = Bukkit.getServer().getVersion().contains("1.8") && !is1v21v8;
     }
 

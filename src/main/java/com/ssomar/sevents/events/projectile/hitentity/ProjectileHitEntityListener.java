@@ -21,7 +21,7 @@ public class ProjectileHitEntityListener implements Listener {
         if(!Version.is1v11Less()) {
             /* PROJECTILE_HIT_BLOCK PART */
             if ((target = e.getHitEntity()) != null && !(target instanceof Player)) {
-                ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target);
+                ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target, e);
                 if(!Version.is1v12Less()) projectileHitEntityEvent.setCancelled(e.isCancelled());
                 Bukkit.getServer().getPluginManager().callEvent(projectileHitEntityEvent);
                 if (projectileHitEntityEvent.isCancelled() && !Version.is1v12Less()) {
@@ -34,7 +34,7 @@ public class ProjectileHitEntityListener implements Listener {
                 for(Entity entity : nearbyEntities) {
                     if(!(entity instanceof Player)) {
                         target = entity;
-                        ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target);
+                        ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target, e);
                         if(!Version.is1v12Less()) projectileHitEntityEvent.setCancelled(e.isCancelled());
                         Bukkit.getServer().getPluginManager().callEvent(projectileHitEntityEvent);
                         if (projectileHitEntityEvent.isCancelled() && !Version.is1v12Less()) {

@@ -24,7 +24,7 @@ public class ProjectileHitPlayerListener implements Listener {
             if ((target = e.getHitEntity()) != null && target instanceof Player) {
                 /* NPC is not a player O_o */
                 if (e.getEntity().hasMetadata("NPC")){
-                    ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target);
+                    ProjectileHitEntityEvent projectileHitEntityEvent = new ProjectileHitEntityEvent(projectile, target, e);
                     if(!Version.is1v12Less()) projectileHitEntityEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(projectileHitEntityEvent);
                     if (projectileHitEntityEvent.isCancelled() && !Version.is1v12Less()) {
@@ -32,7 +32,7 @@ public class ProjectileHitPlayerListener implements Listener {
                     }
                 }
                 else {
-                    ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
+                    ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target, e);
                     if(!Version.is1v12Less())  projectileHitPlayerEvent.setCancelled(e.isCancelled());
                     Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
                     if (projectileHitPlayerEvent.isCancelled() && !Version.is1v12Less()) {
@@ -47,7 +47,7 @@ public class ProjectileHitPlayerListener implements Listener {
                 for(Entity entity : nearbyEntities) {
                     if(entity instanceof Player) {
                         target = entity;
-                        ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target);
+                        ProjectileHitPlayerEvent projectileHitPlayerEvent = new ProjectileHitPlayerEvent(projectile, (Player) target, e);
                         if(!Version.is1v12Less()) projectileHitPlayerEvent.setCancelled(e.isCancelled());
                         Bukkit.getServer().getPluginManager().callEvent(projectileHitPlayerEvent);
                         if (projectileHitPlayerEvent.isCancelled() && !Version.is1v12Less()) {

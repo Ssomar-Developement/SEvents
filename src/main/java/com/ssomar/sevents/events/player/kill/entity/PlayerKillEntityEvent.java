@@ -1,10 +1,14 @@
 package com.ssomar.sevents.events.player.kill.entity;
 
+import org.bukkit.damage.DamageType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,17 +21,22 @@ public class PlayerKillEntityEvent extends PlayerEvent implements Cancellable {
     private final Entity entity;
     private int droppedExp;
     private List<ItemStack> drops;
+    private String cause;
 
     /**
-     * @param player The player who put on / removed the armor.
-     * @param entity The block clicked, can be null
+     * @param player The player who killed the entity
+     * @param entity The entity killed
+     * @param droppedExp amount of xp dropped from the killed entity
+     * @param drops array of list of drops from the killed entity
+     * @param cause possible values: {@link DamageType} enum values, {@link HangingBreakEvent.RemoveCause} enum values and {@code VEHICLE_DESTROY} from {@link PlayerKillEntityListener#onVehicleDestroyEvent(VehicleDestroyEvent)}
      */
-    public PlayerKillEntityEvent(final Player player, final @NotNull Entity entity, int droppedExp, List<ItemStack> drops){
+    public PlayerKillEntityEvent(final Player player, final @NotNull Entity entity, int droppedExp, List<ItemStack> drops, String cause){
         super(player);
         this.entity = entity;
         this.droppedExp = droppedExp;
         this.drops = drops;
         this.cancel = false;
+        this.cause = cause;
     }
 
     public Entity getEntity() {
@@ -60,6 +69,8 @@ public class PlayerKillEntityEvent extends PlayerEvent implements Cancellable {
     public List<ItemStack> getDrops() {
         return drops;
     }
+
+    public String getCause() {return this.cause;}
 
     public void setDroppedExp(int droppedExp) {
         this.droppedExp = droppedExp;

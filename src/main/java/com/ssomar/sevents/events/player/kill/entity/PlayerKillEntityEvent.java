@@ -6,11 +6,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -21,22 +23,40 @@ public class PlayerKillEntityEvent extends PlayerEvent implements Cancellable {
     private final Entity entity;
     private int droppedExp;
     private List<ItemStack> drops;
-    private String cause;
+
+    /**
+     * Can be null because not only EntityDeathEvent can make constructors of {@code PlayerKillEntityEvent} class
+     */
+    private EntityDeathEvent entityDeathEvent;
 
     /**
      * @param player The player who killed the entity
      * @param entity The entity killed
      * @param droppedExp amount of xp dropped from the killed entity
      * @param drops array of list of drops from the killed entity
-     * @param cause possible values: {@link DamageType} enum values, {@link HangingBreakEvent.RemoveCause} enum values and {@code VEHICLE_DESTROY} from {@link PlayerKillEntityListener#onVehicleDestroyEvent(VehicleDestroyEvent)}
      */
-    public PlayerKillEntityEvent(final Player player, final @NotNull Entity entity, int droppedExp, List<ItemStack> drops, String cause){
+    public PlayerKillEntityEvent(final Player player, final @NotNull Entity entity, int droppedExp, List<ItemStack> drops){
         super(player);
         this.entity = entity;
         this.droppedExp = droppedExp;
         this.drops = drops;
         this.cancel = false;
-        this.cause = cause;
+    }
+
+    /**
+     * @param player The player who killed the entity
+     * @param entity The entity killed
+     * @param droppedExp amount of xp dropped from the killed entity
+     * @param drops array of list of drops from the killed entity
+     * @param entityDeathEvent the pointer to this EntityDeathEvent
+     */
+    public PlayerKillEntityEvent(final Player player, final @NotNull Entity entity, int droppedExp, List<ItemStack> drops, EntityDeathEvent entityDeathEvent){
+        super(player);
+        this.entity = entity;
+        this.droppedExp = droppedExp;
+        this.drops = drops;
+        this.cancel = false;
+        this.entityDeathEvent = entityDeathEvent;
     }
 
     public Entity getEntity() {
@@ -70,7 +90,7 @@ public class PlayerKillEntityEvent extends PlayerEvent implements Cancellable {
         return drops;
     }
 
-    public String getCause() {return this.cause;}
+    public @Nullable EntityDeathEvent getEntityDeathEvent() {return this.entityDeathEvent;}
 
     public void setDroppedExp(int droppedExp) {
         this.droppedExp = droppedExp;

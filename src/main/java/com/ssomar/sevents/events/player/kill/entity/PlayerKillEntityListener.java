@@ -43,7 +43,7 @@ public class PlayerKillEntityListener implements Listener {
         }
 
         if (p != null) {
-            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, entity, e.getDroppedExp(), e.getDrops(), e.getDamageSource().getDamageType().toString());
+            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, entity, e.getDroppedExp(), e.getDrops(), e);
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
             e.setDroppedExp(playerKillEntityEvent.getDroppedExp());
         }
@@ -67,7 +67,7 @@ public class PlayerKillEntityListener implements Listener {
         if ((p = (Player) e.getRemover()) == null) return;
 
         if (p != null) {
-            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getEntity(), 0, new ArrayList<>(), e.getCause().toString());
+            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getEntity(), 0, new ArrayList<>());
             playerKillEntityEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
             if(playerKillEntityEvent.isCancelled()) e.setCancelled(true);
@@ -83,7 +83,7 @@ public class PlayerKillEntityListener implements Listener {
         if ((p = (Player) e.getAttacker()) == null) return;
 
         if (p != null) {
-            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getVehicle(), 0, new ArrayList<>(), "VEHICLE_DESTROY");
+            PlayerKillEntityEvent playerKillEntityEvent = new PlayerKillEntityEvent(p, e.getVehicle(), 0, new ArrayList<>());
             playerKillEntityEvent.setCancelled(e.isCancelled());
             Bukkit.getServer().getPluginManager().callEvent(playerKillEntityEvent);
             if(playerKillEntityEvent.isCancelled()) e.setCancelled(true);

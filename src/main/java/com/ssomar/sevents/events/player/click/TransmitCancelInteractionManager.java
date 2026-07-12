@@ -1,9 +1,6 @@
 package com.ssomar.sevents.events.player.click;
 
-import java.util.HashMap;
-import java.util.UUID;
-
-public class TransmitCancelInteractionManager extends HashMap<UUID, Integer> {
+public class TransmitCancelInteractionManager extends InteractionMarkerManager {
 
     private static TransmitCancelInteractionManager instance;
 

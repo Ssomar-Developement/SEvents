@@ -1,9 +1,6 @@
 package com.ssomar.sevents.events.player.click;
 
-import java.util.HashMap;
-import java.util.UUID;
-
-public class CancelOffHandInteractionManager extends HashMap<UUID, Integer> {
+public class CancelOffHandInteractionManager extends InteractionMarkerManager {
 
     private static CancelOffHandInteractionManager instance;
 

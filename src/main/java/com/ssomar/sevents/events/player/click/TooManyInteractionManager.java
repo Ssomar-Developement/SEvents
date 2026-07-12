@@ -1,9 +1,6 @@
 package com.ssomar.sevents.events.player.click;
 
-import java.util.HashMap;
-import java.util.UUID;
-
-public class TooManyInteractionManager extends HashMap<UUID, Integer> {
+public class TooManyInteractionManager extends InteractionMarkerManager {
 
     private static TooManyInteractionManager instance;
 
